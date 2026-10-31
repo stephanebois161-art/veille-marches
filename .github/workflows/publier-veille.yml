@@ -1,0 +1,49 @@
+# Publie la veille du jour sur main (et donc sur GitHub Pages).
+# La tâche planifiée pousse chaque matin une branche claude/veille-AAAA-MM-JJ
+# partant de main ; ce workflow avance main jusqu'à ce commit, puis supprime la branche.
+name: Publier la veille
+
+on:
+  push:
+    branches:
+      - "claude/veille-*"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publier-veille
+  cancel-in-progress: false
+
+jobs:
+  publier:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Vérifier que seuls index.html et archives/ changent
+        run: |
+          git fetch origin main
+          changed=$(git diff --name-only origin/main...HEAD)
+          echo "Fichiers modifiés :"; echo "$changed"
+          if echo "$changed" | grep -vE '^(index\.html|archives/[0-9]{4}-[0-9]{2}-[0-9]{2}\.html)$' | grep -q .; then
+            echo "::error::La branche modifie d'autres fichiers qu'index.html et archives/ : publication refusée."
+            exit 1
+          fi
+
+      - name: Vérifier l'absence d'adresse mail
+        run: |
+          if git diff origin/main...HEAD -- index.html archives/ | grep '^+' | grep -qE '[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[a-z]{2,}'; then
+            echo "::error::Une adresse mail a été trouvée : publication refusée (dépôt public)."
+            exit 1
+          fi
+
+      - name: Avancer main sur ce commit
+        run: |
+          git merge-base --is-ancestor origin/main HEAD || { echo "::error::La branche ne part pas du dernier main."; exit 1; }
+          git push origin HEAD:main
+
+      - name: Supprimer la branche du jour
+        run: git push origin --delete "${GITHUB_REF_NAME}"

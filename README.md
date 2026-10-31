@@ -22,7 +22,8 @@ Les adresses des destinataires du mail ne sont pas publiées ici, car le dépôt
 2. Elle prépare le programme du prochain jour de bourse (le vendredi : celui du lundi, plus une ligne sur le week-end).
 3. Elle met à jour la page Claude, puis envoie le mail depuis Gmail.
 
-Pour l'instant, la tâche ne met pas encore à jour ce dépôt : `index.html` est une copie du programme du lundi 2 novembre 2026.
+4. Elle pousse la page du jour sur une branche `claude/veille-AAAA-MM-JJ` partie de `main` (`index.html` + copie dans `archives/`).
+5. Le workflow `.github/workflows/publier-veille.yml` vérifie que seuls ces fichiers changent et qu'aucune adresse mail n'y figure, avance `main` sur ce commit, puis supprime la branche. GitHub Pages republie alors la page.
 
 ## Page publique (GitHub Pages)
 

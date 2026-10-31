@@ -21,7 +21,6 @@ Les adresses des destinataires du mail ne sont pas publiées ici, car le dépôt
 1. Une tâche planifiée Claude tourne du lundi au vendredi à 8h43 (heure de Paris).
 2. Elle prépare le programme du prochain jour de bourse (le vendredi : celui du lundi, plus une ligne sur le week-end).
 3. Elle met à jour la page Claude, puis envoie le mail depuis Gmail.
-
 4. Elle pousse la page du jour sur une branche `claude/veille-AAAA-MM-JJ` partie de `main` (`index.html` + copie dans `archives/`).
 5. Le workflow `.github/workflows/publier-veille.yml` vérifie que seuls ces fichiers changent et qu'aucune adresse mail n'y figure, avance `main` sur ce commit, puis supprime la branche. GitHub Pages republie alors la page.
 

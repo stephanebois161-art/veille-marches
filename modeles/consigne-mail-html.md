@@ -1,0 +1,12 @@
+2. Mail :
+- Envoie avec l'outil Gmail send_message à [adresses des destinataires, non publiées ici], objet « Veille marchés – [jour et date du programme] ».
+- htmlBody : reproduis la page de veille en HTML de mail. Utilise uniquement des styles inline (pas de bloc style, pas de classes, pas de polices web), une mise en page en tableaux de présentation, et la couleur de chaque cellule à la fois en attribut bgcolor et en style background. Police Arial, texte #121a26, et Consolas / Courier New pour les heures et les chiffres.
+  · Fond général #eef1f5, colonne de 680 px.
+  · Bandeau : cellule #0d1b2e. Surtitre « ● Programme du prochain jour de bourse » en #f2a516, 12px, majuscules. Date en 44px, gras, majuscules, blanche, avec l'année en #8fa3bd. Ligne de 3 cellules « moments clés » (bordure 1px #3a4b63, arrondi 8px), chacune avec l'heure en 24px gras #f2a516 et un libellé 13,5px #f2f5f9. Puis la ligne « Mis à jour le … · Heures de Paris · décalage » en 13px #8fa3bd, avec les valeurs en gras #f2f5f9.
+  · Résumé : 16px, bordure gauche de 4px #f2a516.
+  · Titre de section : 24px, gras, majuscules, suivi d'un compteur (fond #121a26, texte blanc, arrondi 999px) et d'une précision éventuelle en 13px #5b6677.
+  · Événement = tableau-carte (fond blanc, bordure 1px #dbe1e8, arrondi 10px). Cellule gauche de 92px, fond #f6f8fb : heure en 20px gras, sous-libellé en 11px majuscules #5b6677. Pour les événements majeurs : bordure #121a26, et cellule gauche #121a26 avec texte blanc et sous-libellé #c9d3e0. Cellule droite : nom en 17px gras, tickers en pastilles (fond #e8eef8, texte #1e63d6, 12px gras), sous-titre en 13px #5b6677. Puis les pastilles de chiffres (fond #f3f5f8, libellé #5b6677, valeur en gras). Puis un tableau de 2 cellules côte à côte : « ▲ Au-dessus » sur fond #e7f6ee avec un titre #0f8a54, et « ▼ En dessous » sur fond #fcebe8 avec un titre #cc3b2b. Enfin, la pastille d'incertitude (fond #fff3d6, texte #9a6200, 12px gras).
+  · Section vide : encadré en tirets #dbe1e8 avec « Rien de prévu » en gras.
+  · Pied : bordure haute #dbe1e8, sources en texte simple sans liens, la page sous la forme « claude[.]ai/artifact/UoVWjWGygGRXuSaGSU2Rma » à copier sans les crochets, et « Ceci n'est pas un conseil en investissement ».
+- body : le même programme en texte simple, sans Markdown.
+- N'écris aucune adresse web cliquable, ni dans le HTML ni dans le texte (le connecteur Gmail les transforme en liens google.com/url qui ne marchent pas).

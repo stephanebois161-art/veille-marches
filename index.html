@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Veille des marchés</title>
+<meta name="description" content="Programme du prochain jour de bourse : annonces économiques, événements, introductions en bourse et résultats d'entreprises, heures de Paris.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700;800&family=Public+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+/* Layout : bandeau « tableau des départs » en tête, puis feuille de séance — heure en bloc à gauche, scénarios côte à côte */
+:root{
+  color-scheme:light;
+  --bg:#eef1f5; --surface:#ffffff; --ink:#121a26; --muted:#5b6677; --line:#dbe1e8;
+  --board:#0d1b2e; --board-ink:#f2f5f9; --board-muted:#8fa3bd;
+  --accent:#1e63d6; --hot:#f2a516;
+  --up:#0f8a54; --up-bg:#e7f6ee; --down:#cc3b2b; --down-bg:#fcebe8;
+  --warn:#9a6200; --warn-bg:#fff3d6;
+  --display:"Barlow Semi Condensed","Arial Narrow",system-ui,sans-serif;
+  --body:"Public Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 var(--body)}
+img{max-width:100%}
+.gut{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.in{max-width:900px;margin:0 auto}
+
+/* Bandeau */
+.board{background:var(--board);color:var(--board-ink)}
+.board .in{padding-block:30px 26px;display:flex;flex-direction:column;gap:18px}
+.eyebrow{font:700 12px/1 var(--body);letter-spacing:.12em;text-transform:uppercase;color:var(--hot);display:flex;align-items:center;gap:8px}
+.eyebrow::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--hot);box-shadow:0 0 0 4px rgba(242,165,22,.25)}
+h1{font:800 clamp(38px,8vw,64px)/.95 var(--display);margin:0;letter-spacing:-.01em;text-transform:uppercase;text-wrap:balance}
+h1 span{color:var(--board-muted);font-weight:600}
+.meta{font-size:13px;color:var(--board-muted);max-width:75ch}
+.meta b{color:var(--board-ink);font-weight:600}
+.keys{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
+.key{border:1px solid rgba(143,163,189,.35);border-radius:8px;padding:12px 14px;display:flex;flex-direction:column;gap:4px}
+.key .h{font:700 26px/1 var(--mono);color:var(--hot);font-variant-numeric:tabular-nums}
+.key .l{font-size:13.5px;line-height:1.35;color:var(--board-ink)}
+
+/* Corps */
+main .in{padding-block:28px 56px;display:flex;flex-direction:column;gap:34px}
+.summary{font-size:16.5px;line-height:1.6;max-width:72ch;margin:0;border-left:4px solid var(--hot);padding:2px 0 2px 16px}
+section{display:flex;flex-direction:column;gap:12px}
+h2{font:800 26px/1.1 var(--display);text-transform:uppercase;letter-spacing:.01em;margin:0;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+h2 .n{font:700 13px/1 var(--mono);background:var(--ink);color:var(--surface);border-radius:999px;padding:5px 10px}
+h2 small{font:500 13px var(--body);text-transform:none;color:var(--muted);letter-spacing:0}
+.list{display:flex;flex-direction:column;gap:10px}
+.ev{background:var(--surface);border:1px solid var(--line);border-radius:10px;display:grid;grid-template-columns:104px minmax(0,1fr);overflow:hidden}
+.ev.major{border-color:var(--ink);box-shadow:0 2px 0 var(--ink)}
+.t{background:#f6f8fb;border-right:1px solid var(--line);padding:16px 12px;display:flex;flex-direction:column;gap:6px}
+.t .h{font:700 20px/1 var(--mono);font-variant-numeric:tabular-nums}
+.major .t{background:var(--ink);color:var(--surface);border-right-color:var(--ink)}
+.major .t .w{color:#c9d3e0}
+.t .w{font:600 11px/1.3 var(--body);color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.body{padding:14px 16px;min-width:0;display:flex;flex-direction:column;gap:10px}
+.top{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 10px}
+.name{font:700 17px/1.3 var(--body)}
+.tk{font:700 12px/1 var(--mono);background:#e8eef8;color:var(--accent);border-radius:4px;padding:4px 6px}
+.sub{font-size:13px;color:var(--muted)}
+.nums{display:flex;flex-wrap:wrap;gap:8px}
+.num{font-size:12.5px;color:var(--muted);background:#f3f5f8;border-radius:6px;padding:5px 9px}
+.num b{color:var(--ink);font:700 13px var(--mono);font-variant-numeric:tabular-nums;margin-left:4px}
+.sc{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.sc div{border-radius:6px;padding:8px 10px;font-size:13.5px;line-height:1.45}
+.sc .u{background:var(--up-bg)} .sc .d{background:var(--down-bg)}
+.sc .k{display:block;font:700 11.5px/1.2 var(--body);text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px}
+.sc .u .k{color:var(--up)} .sc .d .k{color:var(--down)}
+.flag{align-self:flex-start;font-size:12px;font-weight:600;color:var(--warn);background:var(--warn-bg);border-radius:4px;padding:3px 8px}
+.note{font-size:13.5px;color:var(--muted);margin:0;max-width:75ch}
+.empty{background:var(--surface);border:1px dashed var(--line);border-radius:10px;padding:16px;color:var(--muted)}
+.empty b{color:var(--ink)}
+.sources{font-size:12.5px;color:var(--muted);display:flex;flex-direction:column;gap:4px;border-top:1px solid var(--line);padding-top:16px}
+.sources a{color:var(--accent)}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media (max-width:560px){
+  .ev{grid-template-columns:1fr}
+  .t{flex-direction:row;align-items:baseline;gap:10px;border-right:0;border-bottom:1px solid var(--line);padding:10px 14px}
+  .sc{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<header class="board gut">
+<div class="in">
+  <div class="eyebrow">Programme du prochain jour de bourse</div>
+  <h1>Lundi 2 novembre <span>2026</span></h1>
+  <div class="keys">
+    <div class="key"><span class="h">14:00</span><span class="l">Cipher Digital : conférence après résultats publiés avant l'ouverture</span></div>
+    <div class="key"><span class="h">16:00</span><span class="l">Indice ISM manufacturier US (octobre)</span></div>
+    <div class="key"><span class="h">22:30</span><span class="l">Résultats d'Apple, après Palantir et Harmonic</span></div>
+  </div>
+  <div class="meta">Mis à jour le <b>vendredi 30 octobre à 9h00</b> · Heures de Paris · Les États-Unis passent à l'heure d'hiver dimanche 1<sup>er</sup> novembre : <b>dès lundi, retour au décalage habituel de 6 heures</b>. 8h30 New York = <b>14h30 Paris</b>, ouverture US à <b>15h30</b>, clôture à <b>22h00</b>.</div>
+</div>
+</header>
+
+<main class="gut">
+<div class="in">
+
+<p class="summary"><strong>Veille d'élections de mi-mandat :</strong> lundi ouvre une semaine chargée (élections mardi 3, emploi US vendredi 6) dans un marché fragilisé par la chute de la tech jeudi soir (Alphabet, Intel, Amazon) et le piratage de Binance. <strong>À 16h00</strong>, l'ISM manufacturier est le seul chiffre majeur ; <strong>le soir</strong>, Palantir puis Apple (22h30) donneront le ton de l'ouverture de mardi.</p>
+
+<section>
+  <h2>Annonces économiques <span class="n">1</span> <small>États-Unis · importance 3</small></h2>
+  <div class="list">
+    <div class="ev major">
+      <div class="t"><span class="h">16:00</span><span class="w">Lundi</span></div>
+      <div class="body">
+        <div class="top"><span class="name">Indice ISM manufacturier</span><span class="sub">octobre</span></div>
+        <div class="nums"><span class="num">Prévision<b>≈ 54,7</b></span><span class="num">Précédent (sept.)<b>54,5</b></span><span class="num">PMI S&amp;P flash oct.<b>56,0</b></span></div>
+        <div class="sc">
+          <div class="u"><span class="k">▲ Au-dessus</span>Industrie solide, tensions sur les prix : dollar et taux US en hausse, or et argent sous pression sous 4 000 $, Nasdaq et bitcoin freinés par la remontée des rendements.</div>
+          <div class="d"><span class="k">▼ En dessous</span>Ralentissement industriel : dollar en repli, or et argent soutenus ; Nasdaq aidé par la baisse des taux, mais risque de lecture « croissance » négative pour les cycliques du CAC 40.</div>
+        </div>
+        <span class="flag">Prévision issue du modèle de Trading Economics, consensus des économistes non encore publié ; marchés de prédiction centrés entre 53 et 56</span>
+      </div>
+    </div>
+  </div>
+  <p class="note">fr.investing.com n'affiche pas le 2 novembre depuis mon environnement ; calendrier reconstruit à partir de Trading Economics, FinanceCalendar (classé « High »), LiteFinance et Asian Market Sense. Les dépenses de construction, le PMI S&amp;P final et le discours de Goolsbee (Fed de Chicago) sont aussi prévus lundi mais ne sont pas classés en importance 3 : non retenus.</p>
+</section>
+
+<section>
+  <h2>Autres événements <span class="n">5</span></h2>
+  <div class="list">
+    <div class="ev">
+      <div class="t"><span class="h">02:30</span><span class="w">Samedi</span></div>
+      <div class="body">
+        <div class="top"><span class="name">PMI officiel manufacturier chinois d'octobre</span><span class="sub">pèsera sur l'ouverture asiatique de lundi</span></div>
+        <div class="nums"><span class="num">Consensus<b>50,0</b></span><span class="num">Précédent (sept.)<b>50,1</b></span></div>
+        <div class="sc">
+          <div class="u"><span class="k">▲ Au-dessus</span>Reprise chinoise confirmée : cuivre et argent soutenus, luxe du CAC 40 (MC, KER, RI) aidé.</div>
+          <div class="d"><span class="k">▼ Sous 50</span>Rechute en contraction : pression sur les métaux industriels et le luxe européen.</div>
+        </div>
+      </div>
+    </div>
+    <div class="ev major">
+      <div class="t"><span class="h">09:00</span><span class="w">Ouverture</span></div>
+      <div class="body">
+        <div class="top"><span class="name">Suite de la purge tech et crypto</span><span class="tk">GOOGL</span><span class="tk">INTC</span><span class="tk">AMZN</span><span class="tk">BTC</span></div>
+        <p class="note">Jeudi soir : Alphabet −13 % en séance, Intel ≈ −23 % et Amazon ≈ −7 % après la clôture. Binance estime son piratage à ≈ 6,3 Md$ (≈ 3 Md$ gelés), le bitcoin est tombé à un plus bas de six semaines vers 78 200 $. L'or teste 4 000 $.</p>
+        <div class="sc">
+          <div class="u"><span class="k">▲ Rebond</span>Achats à bon compte sur la tech : Nasdaq et STMPA soutenus ; récupération des fonds Binance : bitcoin de retour vers 80 000 $, COIN, MSTR et mineurs en hausse.</div>
+          <div class="d"><span class="k">▼ Prolongement</span>Nouvelle vague de ventes sur la tech avant les élections : Nasdaq et semi-conducteurs sous pression ; bitcoin sous 78 000 $, or recherché comme refuge.</div>
+        </div>
+        <span class="flag">Dépend de la séance de vendredi, non encore jouée au moment de la rédaction</span>
+      </div>
+    </div>
+    <div class="ev">
+      <div class="t"><span class="h">10:00</span><span class="w">Lundi</span></div>
+      <div class="body">
+        <div class="top"><span class="name">PMI manufacturiers finaux zone euro, France, Allemagne</span><span class="sub">et ventes au détail allemandes à 08:00</span></div>
+        <div class="nums"><span class="num">Prévision<b>n.c.</b></span><span class="num">Précédent<b>n.c.</b></span></div>
+        <div class="sc">
+          <div class="u"><span class="k">▲ Au-dessus</span>Euro soutenu, cycliques du CAC 40 aidées.</div>
+          <div class="d"><span class="k">▼ En dessous</span>Euro en repli, CAC 40 sous pression hors valeurs défensives.</div>
+        </div>
+        <span class="flag">Heures habituelles, non confirmées précisément</span>
+      </div>
+    </div>
+    <div class="ev">
+      <div class="t"><span class="h">21:00</span><span class="w">Lundi</span></div>
+      <div class="body">
+        <div class="top"><span class="name">Estimations de financement du Trésor US</span><span class="sub">préalable au refinancement trimestriel de mercredi</span></div>
+        <div class="sc">
+          <div class="u"><span class="k">▲ Besoins plus élevés</span>Rendements longs en hausse, dollar soutenu, pression sur le Nasdaq et l'or.</div>
+          <div class="d"><span class="k">▼ Besoins plus faibles</span>Détente des taux longs, soutien aux valeurs de croissance et à l'or.</div>
+        </div>
+        <span class="flag">Heure habituelle (15:00 New York), non confirmée</span>
+      </div>
+    </div>
+    <div class="ev major">
+      <div class="t"><span class="h">Mardi</span><span class="w">3 novembre</span></div>
+      <div class="body">
+        <div class="top"><span class="name">Élections de mi-mandat américaines</span><span class="sub">positionnement dès lundi</span></div>
+        <p class="note">Marchés de prédiction (29 oct.) : Chambre démocrate à ≈ 91–93 %, balayage démocrate ≈ 66 %. Premiers bureaux fermés mardi à minuit (Paris), première séance avec résultats mercredi 15h30.</p>
+        <div class="sc">
+          <div class="u"><span class="k">▲ Scénario attendu</span>Résultat net et conforme : volatilité en baisse, soulagement sur les actions.</div>
+          <div class="d"><span class="k">▼ Surprise ou dépouillement contesté</span>Volatilité prolongée, or et franc suisse recherchés ; balayage républicain : dollar et taux en hausse.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="note"><strong>Week-end :</strong> PMI chinois samedi, commerce extérieur sud-coréen dimanche ; vigilance sur le détroit d'Ormuz (pétrolier attaqué) et les négociations avec l'Iran, qui pourraient faire bouger le pétrole et l'or à l'ouverture.</p>
+</section>
+
+<section>
+  <h2>Introductions en bourse <span class="n">0</span></h2>
+  <div class="empty"><b>Rien de prévu lundi.</b> Seule cotation US annoncée cette semaine-là : Bitari (BIAI), ≈ 30 M$, date et secteur non précisés. Anthropic (IA) toujours évoquée par la presse, sans date ni montant confirmés.</div>
+</section>
+
+<section>
+  <h2>Résultats d'entreprises <span class="n">4</span> <small>BPA = bénéfice par action estimé</small></h2>
+  <div class="list">
+    <div class="ev">
+      <div class="t"><span class="h">≈ 13:00</span><span class="w">Avant ouverture</span></div>
+      <div class="body">
+        <div class="top"><span class="name">Cipher Digital</span><span class="tk">CIFR</span><span class="sub">3<sup>e</sup> trimestre, conférence à 14:00</span></div>
+        <div class="nums"><span class="num">BPA prévu<b>−0,24 $</b></span><span class="num">Précédent<b>n.c.</b></span></div>
+        <div class="sc">
+          <div class="u"><span class="k">▲ Au-dessus</span>Contrats d'hébergement IA confirmés : CIFR en hausse, entraîne IREN, CORZ, HUT, WULF et les mineurs de bitcoin.</div>
+          <div class="d"><span class="k">▼ En dessous</span>Coûts ou retards de centres de données : CIFR et mineurs sous pression, d'autant plus avec un bitcoin affaibli.</div>
+        </div>
+        <span class="flag">Date confirmée par la société (avant l'ouverture), heure exacte non précisée ; BPA d'une seule source (Digrin)</span>
+      </div>
+    </div>
+    <div class="ev">
+      <div class="t"><span class="h">≈ 22:05</span><span class="w">Après clôture</span></div>
+      <div class="body">
+        <div class="top"><span class="name">Palantir</span><span class="tk">PLTR</span><span class="sub">3<sup>e</sup> trimestre, conférence à 23:00</span></div>
+        <div class="nums"><span class="num">BPA prévu<b>0,41 $ / 0,33 $</b></span><span class="num">CA prévu<b>2,18 Md$</b></span><span class="num">Précédent (T2)<b>0,41 $ · 1,94 Md$</b></span></div>
+        <div class="sc">
+          <div class="u"><span class="k">▲ Au-dessus</span>Nouveau relèvement des objectifs : PLTR en hausse, soutien au thème IA logiciel (AI, SNOW, MDB) et au Nasdaq mardi.</div>
+          <div class="d"><span class="k">▼ En dessous</span>Valorisation sanctionnée : PLTR en forte baisse, contagion au logiciel IA dans un marché déjà nerveux.</div>
+        </div>
+        <span class="flag">Deux consensus BPA divergents (MarketBeat 0,41 $, autre source 0,33 $) ; heure de publication habituelle</span>
+      </div>
+    </div>
+    <div class="ev">
+      <div class="t"><span class="h">≈ 22:05</span><span class="w">Après clôture</span></div>
+      <div class="body">
+        <div class="top"><span class="name">Harmonic</span><span class="tk">HLIT</span><span class="sub">3<sup>e</sup> trimestre, webcast à 23:00</span></div>
+        <div class="nums"><span class="num">BPA prévu<b>0,17 $</b></span><span class="num">Précédent<b>n.c.</b></span></div>
+        <div class="sc">
+          <div class="u"><span class="k">▲ Au-dessus</span>Reprise des commandes câble et vidéo : HLIT en hausse.</div>
+          <div class="d"><span class="k">▼ En dessous</span>Objectifs annuels abaissés : HLIT sous pression.</div>
+        </div>
+        <span class="flag">BPA d'une seule source (Digrin)</span>
+      </div>
+    </div>
+    <div class="ev major">
+      <div class="t"><span class="h">22:30</span><span class="w">Après clôture</span></div>
+      <div class="body">
+        <div class="top"><span class="name">Apple</span><span class="tk">AAPL</span><span class="sub">4<sup>e</sup> trimestre fiscal, conférence à 23:00</span></div>
+        <div class="nums"><span class="num">BPA prévu<b>1,98–1,99 $</b></span><span class="num">CA prévu<b>≈ 113,4 Md$</b></span><span class="num">Précédent (T4 2025)<b>1,85 $ · 102,5 Md$</b></span></div>
+        <div class="sc">
+          <div class="u"><span class="k">▲ Au-dessus</span>iPhone 18 Pro solide et prévisions de Noël rassurantes : AAPL en hausse, soutien au Nasdaq, à TSM, QCOM, AVGO et aux fournisseurs européens (STMPA).</div>
+          <div class="d"><span class="k">▼ En dessous</span>Contraintes d'offre, prix de la mémoire ou marge décevante : AAPL en baisse, aggrave la pression sur le Nasdaq avant les élections.</div>
+        </div>
+        <span class="flag">Consensus d'une seule source (MarketBeat, 18 oct.) ; Apple a guidé +9 à 11 % de chiffre d'affaires</span>
+      </div>
+    </div>
+  </div>
+  <p class="note">Aucune société Euronext de la liste trouvée lundi (agendas Zonebourse et ABC Bourse de la semaine pas encore publiés : à confirmer). Franco-Nevada publie le 11 novembre. Estée Lauder (EL à New York) publie lundi mais ne correspond pas à EssilorLuxottica (EL à Paris). AMD est attendu mardi.</p>
+</section>
+
+<div class="sources">
+  <strong>Sources</strong>
+  <span><a href="https://tradingeconomics.com/united-states/business-confidence">Trading Economics (ISM)</a> · <a href="https://www.financecalendar.com/event/us-ism-manufacturing-pmi-november-2026/">FinanceCalendar (ISM)</a> · <a href="https://www.textileworld.com/textile-world/2026/10/manufacturing-pmi-at-54-5-september-2026-ism-manufacturing-pmi-report/">ISM septembre (54,5)</a> · <a href="https://polymarket.com/event/ism-manufacturing-pmi-october-2026">Polymarket (ISM)</a> · <a href="https://litefinance.org/blog/analysts-opinions/weekly-economic-calendar-for-02112026-08112026">LiteFinance</a> · <a href="https://asianmarketsense.substack.com/p/asian-market-sense-data-impacting-7fd">Asian Market Sense</a> · <a href="https://tradingeconomics.com/china/business-confidence">Trading Economics (PMI Chine)</a> · <a href="https://www.home.saxo/en-ch/content/articles/morning-brew/morning-brew-october-30-2026-30102026">Saxo Morning Brew</a> · <a href="https://riotimesonline.com/global-economy-briefing-october-30-2026">Rio Times</a> · <a href="https://admiralmarkets.com/analytics/traders-blog/us-midterm-elections-2026-markets-final-week">Admirals (élections)</a> · <a href="https://macrumors.com/2026/10/06/apple-q4-2026-earnings-nov-2">MacRumors (Apple)</a> · <a href="https://news.ifyouspent.com/en/news/apple-earnings-what-to-watch-november-2026">IfYouSpent (Apple)</a> · <a href="https://www.marketbeat.com/earnings/reports/2026-11-2-palantir-technologies-inc-stock/">MarketBeat (Palantir)</a> · <a href="https://www.nasdaq.com/press-release/palantir-announces-date-third-quarter-2026-earnings-release-and-webcast-2026-10-12">Palantir</a> · <a href="https://www.stocktitan.net/news/CIFR/cipher-digital-announces-date-of-third-quarter-2026-business-update-ieebc0f9cvt8.html">Cipher Digital</a> · <a href="https://www.placera.se/pressmeddelanden/harmonic-harmonic-announces-reporting-date-for-third-quarter-2026-results-20261020">Harmonic</a> · <a href="https://www.placera.se/pressmeddelanden/franco-nevada-franco-nevada-to-release-third-quarter-2026-results-20261013">Franco-Nevada</a> · <a href="https://www.digrin.com/stocks/earnings_calendar/2026-11-02">Digrin</a> · <a href="https://thedesperatetrader.com/earnings-next-week">The Desperate Trader</a> · <a href="https://www.iposcoop.com/ipo-calendar/">IPOScoop</a></span>
+  <span>Ceci n'est pas un conseil en investissement.</span>
+</div>
+
+</div>
+</main>
+
+</body>
+</html>

@@ -263,8 +263,10 @@ def main():
         "fenetre": {"debut": debut, "fin": fin},
         "lisez_moi": ("Heures en heure de Paris. economie = investing.com, États-Unis, importance 3 "
                       "uniquement (calendrier_tradingview = contrôle). resultats = sociétés suivies "
-                      "uniquement ; heure_paris vide = heure non annoncée, moment indique avant "
-                      "l'ouverture / après la clôture quand il est connu."),
+                      "uniquement ; « moment » (avant l'ouverture / après la clôture) est fiable, "
+                      "heure_paris est indicative (souvent l'heure d'ouverture ou de clôture) et vide "
+                      "quand rien n'est annoncé. dates_concordantes = false : TradingView et Nasdaq ne "
+                      "donnent pas la même date, à vérifier. erreurs = sources en panne ce jour-là."),
         "economie": eco,
         "calendrier_tradingview": eco_tv,
         "resultats": resultats,

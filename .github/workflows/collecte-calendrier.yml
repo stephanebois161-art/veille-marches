@@ -10,9 +10,6 @@ on:
     - cron: "15 5 * * 1-5"
     - cron: "15 6 * * 1-5"
   workflow_dispatch:
-  push:
-    branches: ["claude/project-thread-kyxjei"]
-    paths: ["outils/collecte_calendrier.py", ".github/workflows/collecte-calendrier.yml"]
 
 permissions:
   contents: write

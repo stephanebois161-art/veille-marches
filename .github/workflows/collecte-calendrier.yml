@@ -1,0 +1,44 @@
+# Collecte chaque matin le calendrier éco US (importance 3) et les dates de résultats
+# des sociétés suivies, puis publie donnees/calendrier.json sur la branche « donnees ».
+# Cette branche est séparée : main, GitHub Pages et la publication de la veille n'y touchent pas.
+name: Collecter le calendrier
+
+on:
+  schedule:
+    # 5h15 et 6h15 UTC (6h15 et 7h15 à Paris en hiver), du lundi au vendredi,
+    # bien avant la tâche de 8h43 ; le second passage rattrape un éventuel échec.
+    - cron: "15 5 * * 1-5"
+    - cron: "15 6 * * 1-5"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: collecte-calendrier
+  cancel-in-progress: false
+
+jobs:
+  collecter:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Collecter
+        run: python3 outils/collecte_calendrier.py "$RUNNER_TEMP/calendrier.json"
+
+      - name: Vérifier l'absence d'adresse mail
+        run: |
+          if grep -qE '[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[a-z]{2,}' "$RUNNER_TEMP/calendrier.json"; then
+            echo "::error::Adresse mail trouvée : publication refusée."; exit 1
+          fi
+
+      - name: Publier sur la branche donnees
+        run: |
+          cd "$RUNNER_TEMP"
+          git init -q -b donnees publi && cd publi
+          mkdir donnees && cp "$RUNNER_TEMP/calendrier.json" donnees/
+          git add donnees
+          git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
+            commit -qm "Calendrier du $(date -u +%Y-%m-%dT%H:%MZ)"
+          git push -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" donnees

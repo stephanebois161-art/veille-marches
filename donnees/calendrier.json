@@ -1,0 +1,557 @@
+{
+ "genere_le_utc": "2026-11-06T14:20:53Z",
+ "genere_le_paris": "2026-11-06 15:20",
+ "prochain_jour_de_bourse": "2026-11-09",
+ "fenetre": {
+  "debut": "2026-11-06",
+  "fin": "2026-11-16"
+ },
+ "lisez_moi": "Heures en heure de Paris. economie = investing.com, États-Unis, importance 3 uniquement (calendrier_tradingview = contrôle). resultats = sociétés suivies uniquement ; « moment » (avant l'ouverture / après la clôture) est fiable, heure_paris est indicative (souvent l'heure d'ouverture ou de clôture) et vide quand rien n'est annoncé. dates_concordantes = false : TradingView et Nasdaq ne donnent pas la même date, à vérifier. erreurs = sources en panne ce jour-là.",
+ "economie": [
+  {
+   "date_paris": "2026-11-06",
+   "heure_paris": null,
+   "heure_new_york": null,
+   "titre": "Average Hourly Earnings (MoM)  (Oct)",
+   "importance": 3,
+   "prevision": "0.3%",
+   "precedent": "0.3%",
+   "source": "investing.com",
+   "recoupe_tradingview": false
+  },
+  {
+   "date_paris": "2026-11-06",
+   "heure_paris": null,
+   "heure_new_york": null,
+   "titre": "Nonfarm Payrolls  (Oct)",
+   "importance": 3,
+   "prevision": "65K",
+   "precedent": "60K",
+   "source": "investing.com",
+   "recoupe_tradingview": false
+  },
+  {
+   "date_paris": "2026-11-06",
+   "heure_paris": null,
+   "heure_new_york": null,
+   "titre": "Unemployment Rate  (Oct)",
+   "importance": 3,
+   "prevision": "4.2%",
+   "precedent": "4.2%",
+   "source": "investing.com",
+   "recoupe_tradingview": false
+  },
+  {
+   "date_paris": "2026-11-10",
+   "heure_paris": "14:30",
+   "heure_new_york": "08:30",
+   "titre": "Core CPI (MoM)  (Oct)",
+   "importance": 3,
+   "prevision": "0.2%",
+   "precedent": "0.3%",
+   "source": "investing.com",
+   "recoupe_tradingview": true
+  },
+  {
+   "date_paris": "2026-11-10",
+   "heure_paris": "14:30",
+   "heure_new_york": "08:30",
+   "titre": "CPI (MoM)  (Oct)",
+   "importance": 3,
+   "prevision": "0.3%",
+   "precedent": "0.6%",
+   "source": "investing.com",
+   "recoupe_tradingview": true
+  },
+  {
+   "date_paris": "2026-11-10",
+   "heure_paris": "14:30",
+   "heure_new_york": "08:30",
+   "titre": "CPI (YoY)  (Oct)",
+   "importance": 3,
+   "prevision": null,
+   "precedent": "3.7%",
+   "source": "investing.com",
+   "recoupe_tradingview": true
+  },
+  {
+   "date_paris": "2026-11-10",
+   "heure_paris": "19:00",
+   "heure_new_york": "13:00",
+   "titre": "10-Year Note Auction",
+   "importance": 3,
+   "prevision": null,
+   "precedent": "5.300%",
+   "source": "investing.com",
+   "recoupe_tradingview": false
+  },
+  {
+   "date_paris": "2026-11-12",
+   "heure_paris": "14:30",
+   "heure_new_york": "08:30",
+   "titre": "Initial Jobless Claims",
+   "importance": 3,
+   "prevision": null,
+   "precedent": "189K",
+   "source": "investing.com",
+   "recoupe_tradingview": false
+  },
+  {
+   "date_paris": "2026-11-12",
+   "heure_paris": "16:00",
+   "heure_new_york": "10:00",
+   "titre": "Existing Home Sales  (Oct)",
+   "importance": 3,
+   "prevision": "3.88M",
+   "precedent": "3.99M",
+   "source": "investing.com",
+   "recoupe_tradingview": true
+  },
+  {
+   "date_paris": "2026-11-12",
+   "heure_paris": "18:00",
+   "heure_new_york": "12:00",
+   "titre": "Crude Oil Inventories",
+   "importance": 3,
+   "prevision": null,
+   "precedent": "-0.865M",
+   "source": "investing.com",
+   "recoupe_tradingview": false
+  },
+  {
+   "date_paris": "2026-11-12",
+   "heure_paris": "19:00",
+   "heure_new_york": "13:00",
+   "titre": "30-Year Bond Auction",
+   "importance": 3,
+   "prevision": null,
+   "precedent": "5.618%",
+   "source": "investing.com",
+   "recoupe_tradingview": false
+  },
+  {
+   "date_paris": "2026-11-13",
+   "heure_paris": "14:30",
+   "heure_new_york": "08:30",
+   "titre": "PPI (MoM)  (Oct)",
+   "importance": 3,
+   "prevision": "0.4%",
+   "precedent": "1.3%",
+   "source": "investing.com",
+   "recoupe_tradingview": true
+  }
+ ],
+ "calendrier_tradingview": [
+  {
+   "date_paris": "2026-11-06",
+   "heure_paris": "14:30",
+   "titre": "Non Farm Payrolls",
+   "prevision": 65,
+   "precedent": 60,
+   "source": "tradingview"
+  },
+  {
+   "date_paris": "2026-11-06",
+   "heure_paris": "14:30",
+   "titre": "Unemployment Rate",
+   "prevision": 4.2,
+   "precedent": 4.2,
+   "source": "tradingview"
+  },
+  {
+   "date_paris": "2026-11-06",
+   "heure_paris": "16:00",
+   "titre": "Michigan Consumer Sentiment Prel",
+   "prevision": 48,
+   "precedent": 46.3,
+   "source": "tradingview"
+  },
+  {
+   "date_paris": "2026-11-10",
+   "heure_paris": "14:30",
+   "titre": "Core Inflation Rate MoM",
+   "prevision": 0.2,
+   "precedent": 0.3,
+   "source": "tradingview"
+  },
+  {
+   "date_paris": "2026-11-10",
+   "heure_paris": "14:30",
+   "titre": "Core Inflation Rate YoY",
+   "prevision": 2.8,
+   "precedent": 2.6,
+   "source": "tradingview"
+  },
+  {
+   "date_paris": "2026-11-10",
+   "heure_paris": "14:30",
+   "titre": "Inflation Rate MoM",
+   "prevision": 0.3,
+   "precedent": 0.6,
+   "source": "tradingview"
+  },
+  {
+   "date_paris": "2026-11-10",
+   "heure_paris": "14:30",
+   "titre": "Inflation Rate YoY",
+   "prevision": null,
+   "precedent": 3.7,
+   "source": "tradingview"
+  },
+  {
+   "date_paris": "2026-11-12",
+   "heure_paris": "16:00",
+   "titre": "Existing Home Sales",
+   "prevision": 3.86,
+   "precedent": 3.99,
+   "source": "tradingview"
+  },
+  {
+   "date_paris": "2026-11-13",
+   "heure_paris": "14:30",
+   "titre": "PPI MoM",
+   "prevision": 0.4,
+   "precedent": 1.3,
+   "source": "tradingview"
+  }
+ ],
+ "resultats": [
+  {
+   "groupe": "US",
+   "symbole": "NYSE:OKLO",
+   "ticker": "OKLO",
+   "societe": "Oklo Inc. Class A",
+   "date_paris": "2026-11-06",
+   "heure_paris": "15:30",
+   "moment": "avant l'ouverture",
+   "bpa_prevu": -0.2695,
+   "ca_prevu": 1029120,
+   "source": "tradingview",
+   "nasdaq": {
+    "date": "2026-11-06",
+    "moment": "avant l'ouverture",
+    "bpa_prevu": "($0.28)"
+   },
+   "dates_concordantes": true
+  },
+  {
+   "groupe": "US",
+   "symbole": "NYSE:HE",
+   "ticker": "HE",
+   "societe": "Hawaiian Electric Industries, Inc.",
+   "date_paris": "2026-11-06",
+   "heure_paris": "22:05",
+   "moment": "après la clôture",
+   "bpa_prevu": 0.086,
+   "ca_prevu": null,
+   "source": "tradingview",
+   "nasdaq": {
+    "date": "2026-11-06",
+    "moment": "après la clôture",
+    "bpa_prevu": null
+   },
+   "dates_concordantes": true
+  },
+  {
+   "groupe": "Mineurs or/argent",
+   "symbole": "NYSE:B",
+   "ticker": "B",
+   "societe": "Barrick Mining Corporation",
+   "date_paris": "2026-11-09",
+   "heure_paris": "12:00",
+   "moment": "avant l'ouverture",
+   "bpa_prevu": 0.7778,
+   "ca_prevu": 5095058793.768001,
+   "source": "tradingview",
+   "nasdaq": {
+    "date": "2026-11-09",
+    "moment": "avant l'ouverture",
+    "bpa_prevu": "$0.74"
+   },
+   "dates_concordantes": true
+  },
+  {
+   "groupe": "US",
+   "symbole": "NASDAQ:SBET",
+   "ticker": "SBET",
+   "societe": "Sharplink, Inc.",
+   "date_paris": "2026-11-09",
+   "heure_paris": "15:30",
+   "moment": "avant l'ouverture",
+   "bpa_prevu": 0.0025,
+   "ca_prevu": 10508333,
+   "source": "tradingview",
+   "nasdaq": {
+    "date": "2026-11-09",
+    "moment": "avant l'ouverture",
+    "bpa_prevu": "$0.02"
+   },
+   "dates_concordantes": true
+  },
+  {
+   "groupe": "Mineurs or/argent",
+   "symbole": "NYSE:EXK",
+   "ticker": "EXK",
+   "societe": "Endeavour Silver Corp.",
+   "date_paris": "2026-11-09",
+   "heure_paris": "22:00",
+   "moment": "après la clôture",
+   "bpa_prevu": 0.1119,
+   "ca_prevu": 190432667,
+   "source": "tradingview",
+   "nasdaq": {
+    "date": "2026-11-10",
+    "moment": "avant l'ouverture",
+    "bpa_prevu": "$0.09"
+   },
+   "dates_concordantes": false
+  },
+  {
+   "groupe": "US",
+   "symbole": "NASDAQ:MARA",
+   "ticker": "MARA",
+   "societe": "MARA Holdings, Inc.",
+   "date_paris": "2026-11-09",
+   "heure_paris": "22:00",
+   "moment": "après la clôture",
+   "bpa_prevu": -0.3918,
+   "ca_prevu": 183236415,
+   "source": "tradingview",
+   "nasdaq": {
+    "date": "2026-11-09",
+    "moment": "après la clôture",
+    "bpa_prevu": "($0.04)"
+   },
+   "dates_concordantes": true
+  },
+  {
+   "groupe": "US",
+   "symbole": "NYSE:HIMS",
+   "ticker": "HIMS",
+   "societe": "Hims & Hers Health, Inc. Class A",
+   "date_paris": "2026-11-09",
+   "heure_paris": "22:05",
+   "moment": "après la clôture",
+   "bpa_prevu": 0.0566,
+   "ca_prevu": 892881690,
+   "source": "tradingview",
+   "nasdaq": {
+    "date": "2026-11-09",
+    "moment": "après la clôture",
+    "bpa_prevu": "$0.07"
+   },
+   "dates_concordantes": true
+  },
+  {
+   "groupe": "US",
+   "symbole": "NASDAQ:RKLB",
+   "ticker": "RKLB",
+   "societe": "Rocket Lab Corporation",
+   "date_paris": "2026-11-09",
+   "heure_paris": "22:05",
+   "moment": "après la clôture",
+   "bpa_prevu": -0.0668,
+   "ca_prevu": 257211135,
+   "source": "tradingview",
+   "nasdaq": {
+    "date": "2026-11-09",
+    "moment": "après la clôture",
+    "bpa_prevu": "($0.05)"
+   },
+   "dates_concordantes": true
+  },
+  {
+   "groupe": "US",
+   "symbole": "NASDAQ:CAN",
+   "ticker": "CAN",
+   "societe": "Canaan Inc. Sponsored ADR Class A",
+   "date_paris": "2026-11-10",
+   "heure_paris": "12:30",
+   "moment": "avant l'ouverture",
+   "bpa_prevu": -0.1323,
+   "ca_prevu": 13665500,
+   "source": "tradingview",
+   "nasdaq": {
+    "date": "2026-11-10",
+    "moment": "avant l'ouverture",
+    "bpa_prevu": "($0.06)"
+   },
+   "dates_concordantes": true
+  },
+  {
+   "groupe": "US",
+   "symbole": "NASDAQ:BTDR",
+   "ticker": "BTDR",
+   "societe": "Bitdeer Technologies Group Class A",
+   "date_paris": "2026-11-10",
+   "heure_paris": "13:00",
+   "moment": "avant l'ouverture",
+   "bpa_prevu": -0.3505,
+   "ca_prevu": 258177833.00000003,
+   "source": "tradingview",
+   "nasdaq": {
+    "date": "2026-11-10",
+    "moment": "avant l'ouverture",
+    "bpa_prevu": "($0.33)"
+   },
+   "dates_concordantes": true
+  },
+  {
+   "groupe": "US",
+   "symbole": "NASDAQ:ETOR",
+   "ticker": "ETOR",
+   "societe": "eToro Group Ltd. Class A",
+   "date_paris": "2026-11-10",
+   "heure_paris": "13:00",
+   "moment": "avant l'ouverture",
+   "bpa_prevu": 0.2748,
+   "ca_prevu": 187189439,
+   "source": "tradingview",
+   "nasdaq": {
+    "date": "2026-11-10",
+    "moment": "avant l'ouverture",
+    "bpa_prevu": "$0.27"
+   },
+   "dates_concordantes": true
+  },
+  {
+   "groupe": "US",
+   "symbole": "NASDAQ:CRWV",
+   "ticker": "CRWV",
+   "societe": "CoreWeave, Inc. Class A",
+   "date_paris": "2026-11-10",
+   "heure_paris": "22:00",
+   "moment": "après la clôture",
+   "bpa_prevu": -1.274,
+   "ca_prevu": 3543291719,
+   "source": "tradingview",
+   "nasdaq": {
+    "date": "2026-11-10",
+    "moment": "après la clôture",
+    "bpa_prevu": "($1.45)"
+   },
+   "dates_concordantes": true
+  },
+  {
+   "groupe": "Mineurs or/argent",
+   "symbole": "NYSE:FNV",
+   "ticker": "FNV",
+   "societe": "Franco-Nevada Corporation",
+   "date_paris": "2026-11-11",
+   "heure_paris": "22:00",
+   "moment": "après la clôture",
+   "bpa_prevu": 1.7362,
+   "ca_prevu": 568444054,
+   "source": "tradingview",
+   "nasdaq": {
+    "date": "2026-11-11",
+    "moment": "après la clôture",
+    "bpa_prevu": "$1.77"
+   },
+   "dates_concordantes": true
+  },
+  {
+   "groupe": "US",
+   "symbole": "NASDAQ:FRMM",
+   "ticker": "FRMM",
+   "societe": "Forum Markets, Incorporated",
+   "date_paris": "2026-11-12",
+   "heure_paris": "14:00",
+   "moment": "avant l'ouverture",
+   "bpa_prevu": -0.335,
+   "ca_prevu": 3497333,
+   "source": "tradingview",
+   "nasdaq": {
+    "date": "2026-11-12",
+    "moment": "avant l'ouverture",
+    "bpa_prevu": "($0.12)"
+   },
+   "dates_concordantes": true
+  },
+  {
+   "groupe": "US",
+   "symbole": "NASDAQ:BTBT",
+   "ticker": "BTBT",
+   "societe": "Bit Digital, Inc.",
+   "date_paris": "2026-11-12",
+   "heure_paris": "15:30",
+   "moment": "avant l'ouverture",
+   "bpa_prevu": -0.0483,
+   "ca_prevu": 32211000,
+   "source": "tradingview",
+   "nasdaq": {
+    "date": "2026-11-12",
+    "moment": "avant l'ouverture",
+    "bpa_prevu": "($0.05)"
+   },
+   "dates_concordantes": true
+  },
+  {
+   "groupe": "US",
+   "symbole": "NASDAQ:NBIS",
+   "ticker": "NBIS",
+   "societe": "Nebius Group N.V. Class A",
+   "date_paris": "2026-11-12",
+   "heure_paris": "15:30",
+   "moment": "avant l'ouverture",
+   "bpa_prevu": -0.7236,
+   "ca_prevu": 907202919,
+   "source": "tradingview",
+   "nasdaq": {
+    "date": "2026-11-12",
+    "moment": "avant l'ouverture",
+    "bpa_prevu": "($0.61)"
+   },
+   "dates_concordantes": true
+  },
+  {
+   "groupe": "US",
+   "symbole": "NASDAQ:GEMI",
+   "ticker": "GEMI",
+   "societe": "Gemini Space Station, Inc. Class A",
+   "date_paris": "2026-11-12",
+   "heure_paris": "22:00",
+   "moment": "après la clôture",
+   "bpa_prevu": -0.5811,
+   "ca_prevu": 44377290,
+   "source": "tradingview",
+   "nasdaq": {
+    "date": "2026-11-12",
+    "moment": "après la clôture",
+    "bpa_prevu": "($1.13)"
+   },
+   "dates_concordantes": true
+  },
+  {
+   "groupe": "US",
+   "symbole": "NASDAQ:ASST",
+   "ticker": "ASST",
+   "societe": "Strive, Inc. Class A",
+   "date_paris": "2026-11-13",
+   "heure_paris": null,
+   "moment": null,
+   "bpa_prevu": 3.0725,
+   "ca_prevu": 3000250,
+   "source": "tradingview",
+   "nasdaq": {
+    "date": "2026-11-09",
+    "moment": null,
+    "bpa_prevu": "$3.44"
+   },
+   "dates_concordantes": false
+  },
+  {
+   "groupe": "Autres places",
+   "symbole": "OTC:MTPLF",
+   "ticker": "MTPLF",
+   "societe": "Metaplanet Inc.",
+   "date_paris": "2026-11-13",
+   "heure_paris": null,
+   "moment": null,
+   "bpa_prevu": 0.0061,
+   "ca_prevu": 18868410,
+   "source": "tradingview"
+  }
+ ],
+ "erreurs": []
+}

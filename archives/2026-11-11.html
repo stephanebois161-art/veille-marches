@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Veille des marchés</title>
+<meta name="description" content="Programme du prochain jour de bourse : annonces économiques, événements, introductions en bourse et résultats d'entreprises, heures de Paris.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700;800&family=Public+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+/* Layout : bandeau « tableau des départs » en tête, puis feuille de séance — heure en bloc à gauche, scénarios côte à côte */
+:root{
+  color-scheme:light;
+  --bg:#eef1f5; --surface:#ffffff; --ink:#121a26; --muted:#5b6677; --line:#dbe1e8;
+  --board:#0d1b2e; --board-ink:#f2f5f9; --board-muted:#8fa3bd;
+  --accent:#1e63d6; --hot:#f2a516;
+  --up:#0f8a54; --up-bg:#e7f6ee; --down:#cc3b2b; --down-bg:#fcebe8;
+  --warn:#9a6200; --warn-bg:#fff3d6;
+  --display:"Barlow Semi Condensed","Arial Narrow",system-ui,sans-serif;
+  --body:"Public Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 var(--body)}
+img{max-width:100%}
+.gut{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.in{max-width:900px;margin:0 auto}
+
+/* Bandeau */
+.board{background:var(--board);color:var(--board-ink)}
+.board .in{padding-block:30px 26px;display:flex;flex-direction:column;gap:18px}
+.eyebrow{font:700 12px/1 var(--body);letter-spacing:.12em;text-transform:uppercase;color:var(--hot);display:flex;align-items:center;gap:8px}
+.eyebrow::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--hot);box-shadow:0 0 0 4px rgba(242,165,22,.25)}
+h1{font:800 clamp(38px,8vw,64px)/.95 var(--display);margin:0;letter-spacing:-.01em;text-transform:uppercase;text-wrap:balance}
+h1 span{color:var(--board-muted);font-weight:600}
+.meta{font-size:13px;color:var(--board-muted);max-width:75ch}
+.meta b{color:var(--board-ink);font-weight:600}
+.keys{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
+.key{border:1px solid rgba(143,163,189,.35);border-radius:8px;padding:12px 14px;display:flex;flex-direction:column;gap:4px}
+.key .h{font:700 26px/1 var(--mono);color:var(--hot);font-variant-numeric:tabular-nums}
+.key .l{font-size:13.5px;line-height:1.35;color:var(--board-ink)}
+
+/* Corps */
+main .in{padding-block:28px 56px;display:flex;flex-direction:column;gap:34px}
+.summary{font-size:16.5px;line-height:1.6;max-width:72ch;margin:0;border-left:4px solid var(--hot);padding:2px 0 2px 16px}
+section{display:flex;flex-direction:column;gap:12px}
+h2{font:800 26px/1.1 var(--display);text-transform:uppercase;letter-spacing:.01em;margin:0;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+h2 .n{font:700 13px/1 var(--mono);background:var(--ink);color:var(--surface);border-radius:999px;padding:5px 10px}
+h2 small{font:500 13px var(--body);text-transform:none;color:var(--muted);letter-spacing:0}
+.list{display:flex;flex-direction:column;gap:10px}
+.ev{background:var(--surface);border:1px solid var(--line);border-radius:10px;display:grid;grid-template-columns:104px minmax(0,1fr);overflow:hidden}
+.ev.major{border-color:var(--ink);box-shadow:0 2px 0 var(--ink)}
+.t{background:#f6f8fb;border-right:1px solid var(--line);padding:16px 12px;display:flex;flex-direction:column;gap:6px}
+.t .h{font:700 20px/1 var(--mono);font-variant-numeric:tabular-nums}
+.major .t{background:var(--ink);color:var(--surface);border-right-color:var(--ink)}
+.major .t .w{color:#c9d3e0}
+.t .w{font:600 11px/1.3 var(--body);color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.body{padding:14px 16px;min-width:0;display:flex;flex-direction:column;gap:10px}
+.top{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 10px}
+.name{font:700 17px/1.3 var(--body)}
+.tk{font:700 12px/1 var(--mono);background:#e8eef8;color:var(--accent);border-radius:4px;padding:4px 6px}
+.sub{font-size:13px;color:var(--muted)}
+.nums{display:flex;flex-wrap:wrap;gap:8px}
+.num{font-size:12.5px;color:var(--muted);background:#f3f5f8;border-radius:6px;padding:5px 9px}
+.num b{color:var(--ink);font:700 13px var(--mono);font-variant-numeric:tabular-nums;margin-left:4px}
+.sc{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.sc div{border-radius:6px;padding:8px 10px;font-size:13.5px;line-height:1.45}
+.sc .u{background:var(--up-bg)} .sc .d{background:var(--down-bg)}
+.sc .k{display:block;font:700 11.5px/1.2 var(--body);text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px}
+.sc .u .k{color:var(--up)} .sc .d .k{color:var(--down)}
+.flag{align-self:flex-start;font-size:12px;font-weight:600;color:var(--warn);background:var(--warn-bg);border-radius:4px;padding:3px 8px}
+.note{font-size:13.5px;color:var(--muted);margin:0;max-width:75ch}
+.empty{background:var(--surface);border:1px dashed var(--line);border-radius:10px;padding:16px;color:var(--muted)}
+.empty b{color:var(--ink)}
+.sources{font-size:12.5px;color:var(--muted);display:flex;flex-direction:column;gap:4px;border-top:1px solid var(--line);padding-top:16px}
+.sources a{color:var(--accent)}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media (max-width:560px){
+  .ev{grid-template-columns:1fr}
+  .t{flex-direction:row;align-items:baseline;gap:10px;border-right:0;border-bottom:1px solid var(--line);padding:10px 14px}
+  .sc{grid-template-columns:1fr}
+}
+</style>
+<style id="styles-page">
+/* Layout : bandeau « tableau des départs » en tête, puis feuille de séance — heure en bloc à gauche, scénarios côte à côte */
+:root{
+  color-scheme:light;
+  --bg:#eef1f5; --surface:#ffffff; --ink:#121a26; --muted:#5b6677; --line:#dbe1e8;
+  --board:#0d1b2e; --board-ink:#f2f5f9; --board-muted:#8fa3bd;
+  --accent:#1e63d6; --hot:#f2a516;
+  --up:#0f8a54; --up-bg:#e7f6ee; --down:#cc3b2b; --down-bg:#fcebe8;
+  --warn:#9a6200; --warn-bg:#fff3d6;
+  --display:"Barlow Semi Condensed","Arial Narrow",system-ui,sans-serif;
+  --body:"Public Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+}
+:root[data-theme="dark"]{color-scheme:light}
+body{background:var(--bg);color:var(--ink);font:15px/1.55 var(--body)}
+.gut{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.in{max-width:900px;margin:0 auto}
+
+/* Bandeau */
+.board{background:var(--board);color:var(--board-ink)}
+.board .in{padding-block:30px 26px;display:flex;flex-direction:column;gap:18px}
+.eyebrow{font:700 12px/1 var(--body);letter-spacing:.12em;text-transform:uppercase;color:var(--hot);display:flex;align-items:center;gap:8px}
+.eyebrow::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--hot);box-shadow:0 0 0 4px rgba(242,165,22,.25)}
+h1{font:800 clamp(38px,8vw,64px)/.95 var(--display);margin:0;letter-spacing:-.01em;text-transform:uppercase;text-wrap:balance}
+h1 span{color:var(--board-muted);font-weight:600}
+.meta{font-size:13px;color:var(--board-muted);max-width:75ch}
+.meta b{color:var(--board-ink);font-weight:600}
+.keys{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
+.key{border:1px solid rgba(143,163,189,.35);border-radius:8px;padding:12px 14px;display:flex;flex-direction:column;gap:4px}
+.key .h{font:700 26px/1 var(--mono);color:var(--hot);font-variant-numeric:tabular-nums}
+.key .l{font-size:13.5px;line-height:1.35;color:var(--board-ink)}
+
+/* Corps */
+main .in{padding-block:28px 56px;display:flex;flex-direction:column;gap:34px}
+.summary{font-size:16.5px;line-height:1.6;max-width:72ch;margin:0;border-left:4px solid var(--hot);padding:2px 0 2px 16px}
+section{display:flex;flex-direction:column;gap:12px}
+h2{font:800 26px/1.1 var(--display);text-transform:uppercase;letter-spacing:.01em;margin:0;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+h2 .n{font:700 13px/1 var(--mono);background:var(--ink);color:var(--surface);border-radius:999px;padding:5px 10px}
+h2 small{font:500 13px var(--body);text-transform:none;color:var(--muted);letter-spacing:0}
+h3{font:800 19px/1.1 var(--display);text-transform:uppercase;letter-spacing:.01em;margin:8px 0 0;color:var(--ink)}
+.list{display:flex;flex-direction:column;gap:10px}
+.ev{background:var(--surface);border:1px solid var(--line);border-radius:10px;display:grid;grid-template-columns:104px minmax(0,1fr);overflow:hidden}
+.ev.major{border-color:var(--ink);box-shadow:0 2px 0 var(--ink)}
+.t{background:#f6f8fb;border-right:1px solid var(--line);padding:16px 12px;display:flex;flex-direction:column;gap:6px}
+.t .h{font:700 20px/1 var(--mono);font-variant-numeric:tabular-nums}
+.major .t{background:var(--ink);color:var(--surface);border-right-color:var(--ink)}
+.major .t .w{color:#c9d3e0}
+.t .w{font:600 11px/1.3 var(--body);color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.body{padding:14px 16px;min-width:0;display:flex;flex-direction:column;gap:10px}
+.top{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 10px}
+.name{font:700 17px/1.3 var(--body)}
+.tk{font:700 12px/1 var(--mono);background:#e8eef8;color:var(--accent);border-radius:4px;padding:4px 6px}
+.sub{font-size:13px;color:var(--muted)}
+.txt{font-size:14px;line-height:1.5;margin:0}
+.nums{display:flex;flex-wrap:wrap;gap:8px}
+.num{font-size:12.5px;color:var(--muted);background:#f3f5f8;border-radius:6px;padding:5px 9px}
+.num b{color:var(--ink);font:700 13px var(--mono);font-variant-numeric:tabular-nums;margin-left:4px}
+.sc{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.sc div{border-radius:6px;padding:8px 10px;font-size:13.5px;line-height:1.45}
+.sc .u{background:var(--up-bg)} .sc .d{background:var(--down-bg)}
+.sc .k{display:block;font:700 11.5px/1.2 var(--body);text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px}
+.sc .u .k{color:var(--up)} .sc .d .k{color:var(--down)}
+.flag{align-self:flex-start;font-size:12px;font-weight:600;color:var(--warn);background:var(--warn-bg);border-radius:4px;padding:3px 8px}
+.note{font-size:13.5px;color:var(--muted);margin:0;max-width:75ch}
+.empty{background:var(--surface);border:1px dashed var(--line);border-radius:10px;padding:16px;color:var(--muted)}
+.empty b{color:var(--ink)}
+.sources{font-size:12.5px;color:var(--muted);display:flex;flex-direction:column;gap:4px;border-top:1px solid var(--line);padding-top:16px}
+.sources a{color:var(--accent)}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media (max-width:560px){
+  .ev{grid-template-columns:1fr}
+  .t{flex-direction:row;align-items:baseline;gap:10px;border-right:0;border-bottom:1px solid var(--line);padding:10px 14px}
+  .sc{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<header class="board gut">
+<div class="in">
+  <div class="eyebrow">Programme du prochain jour de bourse</div>
+  <h1>Mercredi 11 novembre <span>2026</span></h1>
+  <div class="keys"><div class="key"><span class="h">15:30</span><span class="l">Ouverture de Wall Street : réaction à l&#x27;inflation US (CPI) publiée mardi et aux résultats de CoreWeave, marché obligataire fermé (Veterans Day)</span></div><div class="key"><span class="h">≈ 22:00</span><span class="l">Franco-Nevada publie après la clôture : test pour les redevances aurifères avec l&#x27;or vers 4 100 $</span></div><div class="key"><span class="h">Semaine</span><span class="l">Anthropic rencontre les investisseurs avant une cotation visée les 19–20 novembre ; fourchette de prix retirée</span></div></div>
+  <div class="meta">Mis à jour le <b>mardi 10 novembre à 9h00</b> · Heures de Paris · États-Unis et Europe sont tous deux à l'heure d'hiver : <b>décalage habituel de 6 heures</b>. Ouverture US à <b>15h30</b>, clôture à <b>22h00</b>. Mercredi 11 novembre (Veterans Day) : <b>marché obligataire US fermé, Bourse US ouverte</b> ; 11 Novembre férié en France mais <b>Euronext ouvert</b>.</div>
+</div>
+</header>
+<main class="gut">
+<div class="in">
+
+<p class="summary"><strong>Mercredi, journée sans statistique majeure :</strong> aucun indicateur américain d'importance 3 et pas de marché obligataire US (Veterans Day). La séance digérera surtout <strong>le CPI d'octobre publié mardi à 14:30</strong> (hausse de la Fed le 9 décembre jugée probable à ≈ 80 %) et <strong>les résultats de CoreWeave mardi soir</strong>, après un rebond de 2,7 % du Nasdaq lundi malgré la chute de Nvidia. Le soir, <strong>Franco-Nevada</strong> publie ; Anthropic prépare sa cotation de la semaine prochaine.</p>
+<section>
+<h2>Annonces économiques <span class="n">0</span> <small>États-Unis · importance 3</small></h2>
+<div class="empty"><b>Rien de prévu mercredi.</b> Aucun indicateur américain d'importance 3 (Veterans Day : marché obligataire fermé, administrations fermées). Aucun discours de la Fed annoncé.</div>
+<p class="note">Fichier préparé généré lundi 9 novembre à 17h28 (non régénéré ce matin) : aucune annonce d&#x27;importance 3 le 11 novembre, recoupé par FXEmpire (semaine). Prochaines : inscriptions au chômage, ventes de logements anciens, stocks de pétrole et adjudication à 30 ans jeudi 12 ; PPI vendredi 13 à 14:30.</p>
+
+</section>
+<section>
+<h2>Autres événements <span class="n">4</span></h2>
+<div class="list">
+<div class="ev major">
+<div class="t"><span class="h">14:30</span><span class="w">Mardi</span></div>
+<div class="body">
+<div class="top"><span class="name">Inflation US (CPI) d&#x27;octobre : le chiffre qui donnera le ton mercredi</span><span class="tk">DXY</span><span class="tk">US2Y</span><span class="tk">NDX</span><span class="tk">XAU</span><span class="tk">BTC</span><span class="sub">publiée mardi, 8:30 New York</span></div>
+<div class="nums"><span class="num">CPI sur un mois<b>0,3 % · préc. 0,6 %</b></span><span class="num">CPI sous-jacent sur un mois<b>0,2 % · préc. 0,3 % (ING : 0,3 %)</b></span><span class="num">CPI sur un an<b>3,9 % attendu (investing.com) · préc. 3,7 %</b></span></div>
+<div class="sc"><div class="u"><span class="k">▲ Au-dessus</span>Hausse de la Fed le 9 décembre quasi actée : dollar et taux courts en hausse, Nasdaq et IA sous pression mercredi, or repassé sous 4 000 $, bitcoin vers 73 000 $ ; CAC 40 freiné.</div><div class="d"><span class="k">▼ En dessous</span>Paris de hausse allégés : dollar en repli, prolongation du rebond des puces, or vers 4 150 $, argent et bitcoin soutenus (80 000 $ en ligne de mire).</div></div>
+<span class="flag">Résultat inconnu au moment de la rédaction. CoinDesk et ING indiquent qu&#x27;aucun taux annuel ne serait publié (trou de données du shutdown de 2025) ; investing.com affiche pourtant une prévision de 3,9 %</span>
+</div></div>
+<div class="ev major">
+<div class="t"><span class="h">≈ 22:00</span><span class="w">Mardi soir</span></div>
+<div class="body">
+<div class="top"><span class="name">Résultats de CoreWeave</span><span class="tk">CRWV</span><span class="tk">NVDA</span><span class="tk">NBIS</span><span class="tk">IREN</span><span class="tk">CORZ</span><span class="sub">3e trimestre, publié après la clôture de mardi, pèsera sur l&#x27;ouverture de mercredi</span></div>
+<div class="nums"><span class="num">BPA prévu<b>−1,27 $ (TradingView) · −1,45 $ (Nasdaq) · −1,55 $ (FXEmpire)</b></span><span class="num">CA prévu<b>≈ 3,5 Md$ (1,4 Md$ il y a un an)</b></span></div>
+<div class="sc"><div class="u"><span class="k">▲ Au-dessus</span>Carnet de commandes et financement rassurants : CRWV bondit, hébergeurs IA (NBIS, IREN, CORZ, CIFR) et Nasdaq soutenus mercredi.</div><div class="d"><span class="k">▼ En dessous</span>Dette ou marges inquiétantes : CRWV chute, contagion aux hébergeurs IA et aux puces, rebond de lundi remis en cause.</div></div>
+<span class="flag">Résultat inconnu au moment de la rédaction ; estimations de BPA divergentes</span>
+</div></div>
+<div class="ev">
+<div class="t"><span class="h">Journée</span><span class="w">Mercredi</span></div>
+<div class="body">
+<div class="top"><span class="name">Nvidia : suites de l&#x27;enquête sur Jensen Huang</span><span class="tk">NVDA</span><span class="tk">NDX</span><span class="tk">TSM</span><span class="sub">résultats trimestriels attendus le 17 novembre</span></div>
+<div class="nums"><span class="num">NVDA lundi<b>178,67 $ · −4,27 %</b></span><span class="num">Volume<b>≈ 3,7 fois la moyenne</b></span></div>
+<div class="sc"><div class="u"><span class="k">▲ Apaisement</span>Enquête bouclée sans secret compromis : rattrapage de NVDA après une séance où le Nasdaq a pris 2,7 % sans lui.</div><div class="d"><span class="k">▼ Escalade</span>Nouvelles révélations ou départ évoqué : NVDA et chaîne IA (TSM, ASML, STMPA) sous pression avant les résultats du 17.</div></div>
+<span class="flag">Situation évolutive</span>
+</div></div>
+<div class="ev">
+<div class="t"><span class="h">Journée</span><span class="w">Mercredi</span></div>
+<div class="body">
+<div class="top"><span class="name">Pétrole : espoirs d&#x27;accord entre les États-Unis et l&#x27;Iran</span><span class="tk">BRENT</span><span class="tk">TTE</span><span class="tk">XAU</span><span class="sub">Brent sous sa moyenne 200 jours</span></div>
+<div class="nums"><span class="num">Brent lundi soir<b>93,93 $ · −4,5 %</b></span><span class="num">WTI<b>87,83 $ · −3,3 %</b></span></div>
+<div class="sc"><div class="u"><span class="k">▲ Reprise du brut</span>Échec des discussions ou incident dans le détroit d&#x27;Ormuz : Brent vers 99 $, TTE soutenu, inflation et taux à nouveau sous pression.</div><div class="d"><span class="k">▼ Repli prolongé</span>Accord qui se précise : Brent vers 91 puis 86 $, TTE recule, détente des anticipations d&#x27;inflation favorable aux actions et à l&#x27;or.</div></div>
+<span class="flag">Informations de presse (Israel Hayom) non confirmées par Téhéran</span>
+</div></div>
+</div>
+
+</section>
+<section>
+<h2>Introductions en bourse <span class="n">1</span></h2>
+<div class="list">
+<div class="ev major">
+<div class="t"><span class="h">Semaine</span><span class="w">Avant cotation</span></div>
+<div class="body">
+<div class="top"><span class="name">Anthropic (IA) : tournée investisseurs, cotation visée la semaine prochaine</span><span class="tk">ANT</span><span class="sub">Nasdaq · jusqu&#x27;à 69,3 Md$ levés</span></div>
+<div class="nums"><span class="num">Titres proposés<b>867 millions</b></span><span class="num">Fourchette évoquée puis retirée<b>70–80 $</b></span><span class="num">Valorisation implicite<b>≈ 1 400 Md$</b></span></div>
+<p class="txt">Anthropic a envoyé lundi aux banques une fourchette de 70 à 80 $ par action, puis l&#x27;a retirée en annonçant une mise à jour prochaine (Reuters). Selon le WSJ, la cotation viserait jeudi ou vendredi de la semaine prochaine (19–20 novembre).</p>
+<div class="sc"><div class="u"><span class="k">▲ Accueil fort</span>Fourchette confirmée ou relevée : soutien aux valeurs IA (NVDA, AMZN, GOOGL, actionnaires d&#x27;Anthropic) et au Nasdaq.</div><div class="d"><span class="k">▼ Accueil tiède</span>Valorisation revue en baisse : signal négatif pour les valorisations IA et l&#x27;appétit pour les grosses introductions.</div></div>
+<span class="flag">Fourchette non définitive ; date non confirmée par Anthropic</span>
+</div></div>
+</div>
+<p class="note">Autres introductions de la semaine (vVardis, Rezera, Windward Bio : 175 à 214 M$, santé) hors critères.</p>
+
+</section>
+<section>
+<h2>Résultats d&#x27;entreprises <span class="n">1</span> <small>BPA = bénéfice par action estimé</small></h2>
+<div class="list">
+<div class="ev">
+<div class="t"><span class="h">≈ 22:00</span><span class="w">Après clôture</span></div>
+<div class="body">
+<div class="top"><span class="name">Franco-Nevada</span><span class="tk">FNV</span><span class="sub">3e trimestre · conférence jeudi à 14:00</span></div>
+<div class="nums"><span class="num">BPA prévu<b>1,74 $ (TradingView) · 1,77 $ (Nasdaq)</b></span><span class="num">CA prévu<b>≈ 568 M$</b></span></div>
+<div class="sc"><div class="u"><span class="k">▲ Au-dessus</span>Redevances dopées par un or réalisé au-dessus de 4 200 $ : FNV en hausse jeudi, soutien à WPM et RGLD.</div><div class="d"><span class="k">▼ En dessous</span>Volumes décevants ou prévisions prudentes : FNV recule, pression sur les autres sociétés de redevances (WPM, RGLD).</div></div>
+<span class="flag">Heure indicative ; publication après la clôture confirmée par la société</span>
+</div></div>
+</div>
+<p class="note">Euronext et autres places : aucune société de la liste mercredi (agenda Zonebourse : Siemens Energy, E.ON, RWE, ABN AMRO, Vestas…). CoreWeave (mardi soir) est traité dans Autres événements.</p>
+
+</section>
+<section>
+<h2>Presse économique <span class="n">3</span> <small>depuis lundi 9h</small></h2>
+<div class="list">
+<div class="ev">
+<div class="t"><span class="h">17:45</span><span class="w">Lundi · BFM Bourse</span></div>
+<div class="body">
+<div class="top"><span class="name">Le CAC 40 gagne 1,16 %, porté par le repli du pétrole</span><span class="tk">CAC 40</span><span class="tk">LR</span><span class="tk">CA</span><span class="tk">TTE</span></div>
+<span class="sub">Sabrina Sadgui · BFM Bourse · lundi 9 novembre, 17:45</span>
+<p class="txt">Clôture à 8 233,30 points. Legrand +2,8 % (UBS à l&#x27;achat), Lectra +3,9 %, Crédit Agricole −0,3 % après son projet de fusion de sa filiale italienne avec Banco BPM. Brent −4,5 % à 93,93 $ sur des informations d&#x27;un assouplissement iranien ; euro +0,5 % à 1,1204 $.</p>
+<div class="sc"><div class="u"><span class="k">▲ À surveiller</span>CAC 40 et valeurs sensibles au pétrole (aérien, chimie) si la détente sur l&#x27;Iran se confirme.</div><div class="d"><span class="k">▼ À surveiller</span>TTE et parapétrolières si le Brent poursuit sa baisse ; indice exposé à un CPI chaud.</div></div>
+</div></div>
+<div class="ev major">
+<div class="t"><span class="h">23:10</span><span class="w">Lundi · Motley Fool</span></div>
+<div class="body">
+<div class="top"><span class="name">Wall Street : rebond de 2,35 % du S&amp;P 500, Nvidia à contre-courant</span><span class="tk">SPX</span><span class="tk">NDX</span><span class="tk">NVDA</span><span class="tk">AMD</span><span class="tk">AVGO</span></div>
+<span class="sub">The Motley Fool · lundi 9 novembre, 17:10 New York (23:10 Paris)</span>
+<p class="txt">S&amp;P 500 +2,35 % à 7 549,94, Nasdaq +2,7 % à 25 253,14, Dow Jones +2,2 % à 52 389,75. Nvidia −4,27 % à 178,67 $ après l&#x27;ouverture d&#x27;une enquête sur son PDG. AMD +13,26 % (accord Google Cloud, relèvement d&#x27;Oppenheimer), Broadcom +8,78 %, Tesla +5,5 %, Meta +5,1 %.</p>
+<div class="sc"><div class="u"><span class="k">▲ À surveiller</span>Puces (AMD, AVGO, MU, ASML, STMPA) si le rebond de l&#x27;IA se poursuit après CoreWeave.</div><div class="d"><span class="k">▼ À surveiller</span>Rebond fragile : retour des ventes sur la tech si le CPI déçoit ; NVDA reste à part jusqu&#x27;au 17 novembre.</div></div>
+</div></div>
+<div class="ev">
+<div class="t"><span class="h">15:53</span><span class="w">Lundi · Kitco</span></div>
+<div class="body">
+<div class="top"><span class="name">Barrick bat les attentes et confirme ses objectifs 2026</span><span class="tk">B</span><span class="tk">NEM</span><span class="tk">XAU</span></div>
+<span class="sub">Neils Christensen · Kitco News · lundi 9 novembre, 9:53 New York (15:53 Paris)</span>
+<p class="txt">BPA ajusté de 0,82 $ (0,79 $ attendu, +41 %), CA de 5,07 Md$ (+22 %), 816 000 onces d&#x27;or produites. Coût complet en hausse de 24 % à 1 911 $/once ; flux de trésorerie libre de 1,17 Md$, sous le consensus (1,29 Md$). 1,04 Md$ rendus aux actionnaires.</p>
+<div class="sc"><div class="u"><span class="k">▲ À surveiller</span>Mineurs d&#x27;or (B, NEM, AEM) portés par un prix réalisé de 4 243 $/once.</div><div class="d"><span class="k">▼ À surveiller</span>Hausse des coûts et trésorerie sous les attentes : pression si l&#x27;or repasse sous 4 000 $.</div></div>
+</div></div>
+</div>
+<p class="note">Trois articles seulement retenus. Le fil ABC Bourse servi ce matin était une copie ancienne (dépêches du 26 octobre) : remplacé par BFM Bourse, Motley Fool et Kitco, tous ouverts et datés sur la page.</p>
+<h3>Crypto · la sélection</h3>
+<div class="list">
+<div class="ev major">
+<div class="t"><span class="h">21:04</span><span class="w">Lundi · The Block</span></div>
+<div class="body">
+<div class="top"><span class="name">Elizabeth Warren prendra la tête de la commission bancaire du Sénat</span><span class="tk">COIN</span><span class="tk">HOOD</span><span class="tk">BTC</span></div>
+<span class="sub">Sarah Wynn · The Block · lundi 9 novembre, 15:04 New York (21:04 Paris)</span>
+<p class="txt">Après la victoire démocrate au Sénat, Warren présidera la commission bancaire à partir de janvier. Priorités : marchés de prédiction (Kalshi, Polymarket), IA, crise financière potentielle et entreprises crypto de la famille Trump (World Liberty Financial, mèmecoin).</p>
+<div class="sc"><div class="u"><span class="k">▲ À surveiller</span>Course à l&#x27;adoption des textes crypto avant janvier : COIN, HOOD et BTC soutenus si le calendrier s&#x27;accélère.</div><div class="d"><span class="k">▼ À surveiller</span>Durcissement réglementaire en 2027 : pression sur COIN, HOOD et les plateformes de prédiction.</div></div>
+</div></div>
+<div class="ev">
+<div class="t"><span class="h">23:07</span><span class="w">Lundi · The Block</span></div>
+<div class="body">
+<div class="top"><span class="name">MARA : 634 M$ de bénéfice et 13 597 BTC vendus</span><span class="tk">MARA</span><span class="tk">RIOT</span><span class="tk">CLSK</span><span class="tk">BTC</span></div>
+<span class="sub">Jason Shubnell · The Block · lundi 9 novembre, 17:07 New York (23:07 Paris)</span>
+<p class="txt">Bénéfice net de 634,4 M$ grâce à ≈ 885 M$ de gains de valorisation, mais CA en baisse de 35 % à 164,2 M$. 13 597 BTC vendus après le trimestre (≈ 1,1 Md$) pour rembourser 750 M$ de prêts ; dette ramenée à 1,4 Md$. La société prévoit d&#x27;autres ventes (CoinDesk).</p>
+<div class="sc"><div class="u"><span class="k">▲ À surveiller</span>Bilan assaini : MARA et mineurs mieux armés si le BTC rebondit.</div><div class="d"><span class="k">▼ À surveiller</span>Ventes de bitcoins par les mineurs : offre supplémentaire, pression sur le BTC et sur RIOT, CLSK, CIFR.</div></div>
+</div></div>
+<div class="ev">
+<div class="t"><span class="h">04:22</span><span class="w">Mardi · CoinDesk</span></div>
+<div class="body">
+<div class="top"><span class="name">Le bitcoin sous 75 000 $ face au test du CPI</span><span class="tk">BTC</span><span class="tk">MSTR</span><span class="tk">COIN</span></div>
+<span class="sub">Omkar Godbole · CoinDesk · mardi 10 novembre, 04:22 (heure de Paris)</span>
+<p class="txt">BTC ≈ 74 750 $, en tendance baissière depuis son pic au-dessus de 87 000 $ début octobre ; les ETF bitcoin ont faibli. Supports : 73 000 $, puis 70 000 ou 68 000 $ en cas de cassure. Bitget juge qu&#x27;un retour au-dessus de 80 000 $ signalerait une demande plus forte.</p>
+<div class="sc"><div class="u"><span class="k">▲ À surveiller</span>CPI sous-jacent faible : rebond de soulagement vers 80 000 $, MSTR et COIN en levier.</div><div class="d"><span class="k">▼ À surveiller</span>CPI chaud : cassure de 73 000 $ et objectif 68–70 000 $ ; MSTR, ASST et mineurs exposés.</div></div>
+</div></div>
+<div class="ev">
+<div class="t"><span class="h">07:19</span><span class="w">Mardi · The Block</span></div>
+<div class="body">
+<div class="top"><span class="name">Coinbase, Kalshi et Kraken soutiennent la CFTC sur les contrats perpétuels sur actions</span><span class="tk">COIN</span><span class="tk">HOOD</span></div>
+<span class="sub">Timmy Shen · The Block · mardi 10 novembre, 01:19 New York (07:19 Paris)</span>
+<p class="txt">Avec DRW, Jump et Paradigm, ils demandent à intervenir en soutien de la CFTC, attaquée par la Capital Markets Alliance (Cboe, Citadel Securities) qui veut faire annuler l&#x27;autorisation des « perps » sur actions US, approuvés le 2 novembre pour Coinbase, Kalshi et Payward.</p>
+<div class="sc"><div class="u"><span class="k">▲ À surveiller</span>Nouvelle source de revenus de trading pour COIN (et concurrence pour HOOD) si l&#x27;autorisation tient.</div><div class="d"><span class="k">▼ À surveiller</span>Annulation par le tribunal : coup d&#x27;arrêt aux produits dérivés crypto-actions de COIN.</div></div>
+</div></div>
+</div>
+</section>
+<section>
+<h2>Analyses <span class="n">1</span></h2>
+<div class="list">
+<div class="ev major">
+<div class="t"><span class="h">ING</span><span class="w">Mardi 10 nov.</span></div>
+<div class="body">
+<div class="top"><span class="name">Inflation US : sans doute trop chaude pour rassurer</span><span class="tk">US10Y</span><span class="tk">DXY</span><span class="tk">BRENT</span></div>
+<span class="sub">Michiel Tukker et Benjamin Schroeder · ING Think, Rates Spark · mardi 07:25</span>
+<p class="txt">ING attend un CPI sous-jacent à 0,3 % sur un mois, au-dessus du consensus (0,2 %) et loin des ≈ 0,17 % compatibles avec 2 % l&#x27;an. Le lien entre pétrole et taux s&#x27;est affaibli : l&#x27;inflation redevient le moteur, avec des risques haussiers sur les taux ; le 10 ans US vers 5 % devient attractif.</p>
+<div class="sc"><div class="u"><span class="k">▲ Scénario haussier</span>Pour les actions et l&#x27;or : CPI modéré et pétrole vers 90 $, détente des taux, achats sur le 10 ans US vers 5 % qui soutiennent la tech. Horizon : quelques jours.</div><div class="d"><span class="k">▼ Scénario baissier</span>CPI à 0,3 % : hausse des taux courts, dollar ferme, volatilité accrue entre craintes sur l&#x27;IA et sur l&#x27;inflation ; Nasdaq et or freinés.</div></div>
+<span class="flag">Scénarios en partie déduits ; pas de niveau technique publié</span>
+</div></div>
+</div>
+<p class="note">Rien d&#x27;autre de marquant : Apollo (9 novembre, « la formation des prix est cassée », sans chiffre exploitable), BlackRock et Glassnode (4 novembre) déjà présentés.</p>
+
+</section>
+<section>
+<h2>Matières premières <span class="n">2</span></h2>
+<div class="list">
+<div class="ev major">
+<div class="t"><span class="h">OR · ARGENT</span><span class="w">Lundi 9 nov.</span></div>
+<div class="body">
+<div class="top"><span class="name">Or et argent prolongent leur rebond, les banques centrales achètent toujours</span><span class="tk">XAU</span><span class="tk">XAG</span><span class="tk">NEM</span><span class="tk">HL</span></div>
+<span class="sub">Ernest Hoffman, analyses Heraeus · Kitco News · lundi 16:02 (heure de Paris)</span>
+<p class="txt">Or à 4 124,86 $ (+1,3 %), argent à 52,68 $ (+1,5 %) lundi matin, après un passage sous 3 900 $ et sous 49 $. Banques centrales : 321 t achetées au 3e trimestre (+42 %). Heraeus voit la pression revenir avec le pétrole et les paris de hausse de la Fed (≈ 79 %).</p>
+<div class="sc"><div class="u"><span class="k">▲ Scénario haussier</span>Or au-dessus de 4 150 $ si le CPI rassure, soutenu par les achats officiels ; argent vers 53 $ et plus. Mineurs (NEM, B, HL) en levier.</div><div class="d"><span class="k">▼ Scénario baissier</span>Hausse de la Fed confirmée : or à nouveau sous 4 000 $ (plancher récent ≈ 3 900 $), argent vers 49 $.</div></div>
+</div></div>
+<div class="ev">
+<div class="t"><span class="h">PÉTROLE</span><span class="w">Mardi 10 nov.</span></div>
+<div class="body">
+<div class="top"><span class="name">WTI et Brent prolongent leurs pertes, les craintes de frappes sur l&#x27;Iran s&#x27;éloignent</span><span class="tk">BRENT</span><span class="tk">WTI</span><span class="tk">TTE</span></div>
+<span class="sub">Muhammad Umair · FXEmpire · mardi 04:55 (heure de Paris) ; niveaux complétés par Salah-Eddine Bouhmidi (IG Europe)</span>
+<p class="txt">Brent ≈ 94,5 $, cassure de la moyenne 200 jours (98,30 $), RSI proche de la survente ; WTI ≈ 86 $ sous sa moyenne 200 jours (87 $). Hausse de la production de l&#x27;OPEP en octobre ; le blocus américain des ports iraniens reste un contrepoids.</p>
+<div class="sc"><div class="u"><span class="k">▲ Scénario haussier</span>Brent au-dessus de 96 puis 99,4 $ (IG : stabilisation à 91,16 $, objectifs 95 puis 99,45 $) ; WTI au-dessus de 93 $ vers 104–106 $ en cas d&#x27;incident à Ormuz.</div><div class="d"><span class="k">▼ Scénario baissier</span>Brent sous 91,16 $ : 90 puis 86 $ (IG), tendance vers 80 $ (FXEmpire) ; WTI sous 84,4 $ puis 78 $.</div></div>
+</div></div>
+</div>
+<p class="note">Pas de nouvelle note ING sur les matières premières depuis le 5 novembre.</p>
+<div class="list"><div class="empty"><b>Cacao :</b> 5 264,18 $/t, prix ICCO du 6 novembre 2026 (5 307,94 $ le 5 novembre, −0,8 %) — rien à signaler (aucune analyse récente fiable et gratuite).</div></div>
+</section>
+<div class="sources">
+  <strong>Sources</strong>
+  <span><a href="https://raw.githubusercontent.com/stephanebois161-art/veille-marches/donnees/donnees/calendrier.json">Fichier préparé (9/11 17h28)</a> · <a href="https://www.fxempire.com/forecasts/article/the-week-ahead-cpi-and-tech-earnings-test-a-fragile-stock-market-1643118">FXEmpire (semaine)</a> · <a href="https://digrin.com/stocks/earnings_calendar/2026-11-11">Digrin 11/11</a> · <a href="https://finviz.com/news/402003/franco-nevada-to-release-third-quarter-2026-results">Franco-Nevada</a> · <a href="https://www.boursedirect.fr/fr/actualites/categorie/actualites-financieres/agenda-zonebourse-des-resultats-de-societes-semaine-du-9-au-13-novembre-2026-zone-bourse-6d6ff7e77a7699897caebfbf95dd7c755938d961">Zonebourse (agenda)</a> · <a href="https://www.renaissancecapital.com/IPO-Center/Calendar">Renaissance Capital</a> · <a href="https://finance.yahoo.com/markets/stocks/articles/anthropic-retracts-reported-70-80-043206772.html">Yahoo/StockTwits (Anthropic)</a> · <a href="https://www.tradingsat.com/cac-40-FR0003500008/actualites/cac-40-alors-que-nvidia-chute-de-6-a-wall-street-sur-fond-de-liaison-extraconjugale-le-cac-40-gagne-12-porte-par-le-repli-du-petrole-1173430.html">BFM Bourse</a> · <a href="https://www.fool.com/coverage/stock-market-today/2026/11/09/stock-market-today-nov-9-nvidia-stock-plunges-4-on-jensen-huang-investigation-as-nasdaq-surges-nearly-3/">Motley Fool</a> · <a href="https://www.kitco.com/news/article/2026-11-09/barrick-beats-q3-earnings-expectations-gold-production-improves-maintains">Kitco (Barrick)</a> · <a href="https://www.theblock.co/news/regulation/2026-11-09-senate-banking-elizabeth-warren-scrutiny-prediction-markets-trump-crypto-ventures-436898">The Block (Warren)</a> · <a href="https://www.theblock.co/news/business/2026-11-09-mara-q3-earnings-net-profit-bitcoin-sale-ai-pivot-436950">The Block (MARA)</a> · <a href="https://www.coindesk.com/markets/2026/11/10/bitcoin-faces-u-s-cpi-test-as-analysts-warn-inflation-relief-may-not-be-enough">CoinDesk (CPI)</a> · <a href="https://www.theblock.co/news/regulation/2026-11-10-coinbase-kalshi-payward-back-cftc-perps-436971">The Block (CFTC)</a> · <a href="https://think.ing.com/articles/rates-spark-us-inflation-too-hot-for-comfort/">ING Rates Spark</a> · <a href="https://www.kitco.com/news/article/2026-11-09/gold-and-silver-prices-extend-post-election-rebound-central-banks-pace-beat">Kitco (Heraeus)</a> · <a href="https://www.fxempire.com/forecasts/article/oil-price-forecast-wti-and-brent-extend-losses-as-iran-strike-fears-ease-1643467">FXEmpire (pétrole)</a> · <a href="https://www.ig.com/en-ch/news-and-trade-ideas/brent-oil-price-iran-talks-technical-analysis-261109">IG (Brent)</a> · <a href="https://www.icco.org/">ICCO</a></span>
+  <span>Ceci n'est pas un conseil en investissement.</span>
+</div>
+
+</div>
+</main>
+
+</body>
+</html>

@@ -1,0 +1,140 @@
+{
+ "genere_le_utc": "2026-11-13T14:38:37Z",
+ "genere_le_paris": "2026-11-13 15:38",
+ "prochain_jour_de_bourse": "2026-11-16",
+ "fenetre": {
+  "debut": "2026-11-13",
+  "fin": "2026-11-23"
+ },
+ "lisez_moi": "Heures en heure de Paris. economie = investing.com, États-Unis, importance 3 uniquement (calendrier_tradingview = contrôle). resultats = sociétés suivies uniquement ; « moment » (avant l'ouverture / après la clôture) est fiable, heure_paris est indicative (souvent l'heure d'ouverture ou de clôture) et vide quand rien n'est annoncé. dates_concordantes = false : TradingView et Nasdaq ne donnent pas la même date, à vérifier. erreurs = sources en panne ce jour-là.",
+ "economie": [],
+ "calendrier_tradingview": [
+  {
+   "date_paris": "2026-11-13",
+   "heure_paris": "14:30",
+   "titre": "PPI MoM",
+   "prevision": 0.4,
+   "precedent": 1.4,
+   "source": "tradingview"
+  },
+  {
+   "date_paris": "2026-11-17",
+   "heure_paris": "14:30",
+   "titre": "Retail Sales MoM",
+   "prevision": 0,
+   "precedent": 0.8,
+   "source": "tradingview"
+  },
+  {
+   "date_paris": "2026-11-18",
+   "heure_paris": "14:30",
+   "titre": "Housing Starts",
+   "prevision": 1.277,
+   "precedent": 1.221,
+   "source": "tradingview"
+  },
+  {
+   "date_paris": "2026-11-18",
+   "heure_paris": "14:30",
+   "titre": "Building Permits Prel",
+   "prevision": 1.378,
+   "precedent": 1.4,
+   "source": "tradingview"
+  }
+ ],
+ "resultats": [
+  {
+   "groupe": "US",
+   "symbole": "NASDAQ:NVDA",
+   "ticker": "NVDA",
+   "societe": "NVIDIA Corporation",
+   "date_paris": "2026-11-17",
+   "heure_paris": "22:00",
+   "moment": "après la clôture",
+   "bpa_prevu": 2.4696,
+   "ca_prevu": 108721745985,
+   "source": "tradingview",
+   "nasdaq": {
+    "date": "2026-11-17",
+    "moment": "après la clôture",
+    "bpa_prevu": "$2.49"
+   },
+   "dates_concordantes": true
+  },
+  {
+   "groupe": "Euronext",
+   "symbole": "EURONEXT:SOI",
+   "ticker": "SOI",
+   "societe": "Soitec SA",
+   "date_paris": "2026-11-18",
+   "heure_paris": "17:45",
+   "moment": "après la clôture",
+   "bpa_prevu": -0.3841,
+   "ca_prevu": 354638642.19196004,
+   "source": "tradingview"
+  },
+  {
+   "groupe": "US",
+   "symbole": "NYSE:BABA",
+   "ticker": "BABA",
+   "societe": "Alibaba Group Holding Limited Sponsored ADR",
+   "date_paris": "2026-11-19",
+   "heure_paris": "15:30",
+   "moment": "avant l'ouverture",
+   "bpa_prevu": 1.621,
+   "ca_prevu": 40225824344.81722,
+   "source": "tradingview",
+   "nasdaq": {
+    "date": "2026-11-19",
+    "moment": "avant l'ouverture",
+    "bpa_prevu": "$1.56"
+   },
+   "dates_concordantes": true
+  },
+  {
+   "groupe": "Euronext",
+   "symbole": "EURONEXT:UBI",
+   "ticker": "UBI",
+   "societe": "UBISOFT Entertainment",
+   "date_paris": "2026-11-19",
+   "heure_paris": null,
+   "moment": null,
+   "bpa_prevu": -0.8496,
+   "ca_prevu": 725281551.72,
+   "source": "tradingview"
+  },
+  {
+   "groupe": "US",
+   "symbole": "NASDAQ:VFS",
+   "ticker": "VFS",
+   "societe": "VinFast Auto Ltd.",
+   "date_paris": "2026-11-20",
+   "heure_paris": null,
+   "moment": null,
+   "bpa_prevu": -0.4633,
+   "ca_prevu": 1213032633,
+   "source": "tradingview"
+  },
+  {
+   "groupe": "US",
+   "symbole": "NASDAQ:ZM",
+   "ticker": "ZM",
+   "societe": "Zoom Communications, Inc. Class A",
+   "date_paris": "2026-11-23",
+   "heure_paris": "22:05",
+   "moment": "après la clôture",
+   "bpa_prevu": 1.4855,
+   "ca_prevu": 1279011624,
+   "source": "tradingview",
+   "nasdaq": {
+    "date": "2026-11-23",
+    "moment": "après la clôture",
+    "bpa_prevu": "$1"
+   },
+   "dates_concordantes": true
+  }
+ ],
+ "erreurs": [
+  "investing.com inaccessible : HTTP Error 403: Forbidden"
+ ]
+}

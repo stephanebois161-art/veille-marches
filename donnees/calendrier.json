@@ -1,0 +1,274 @@
+{
+ "genere_le_utc": "2026-11-20T15:30:33Z",
+ "genere_le_paris": "2026-11-20 16:30",
+ "prochain_jour_de_bourse": "2026-11-23",
+ "fenetre": {
+  "debut": "2026-11-20",
+  "fin": "2026-11-30"
+ },
+ "lisez_moi": "Heures en heure de Paris. economie = investing.com, États-Unis, importance 3 uniquement (calendrier_tradingview = contrôle). resultats = sociétés suivies uniquement ; « moment » (avant l'ouverture / après la clôture) est fiable, heure_paris est indicative (souvent l'heure d'ouverture ou de clôture) et vide quand rien n'est annoncé. dates_concordantes = false : TradingView et Nasdaq ne donnent pas la même date, à vérifier. erreurs = sources en panne ce jour-là.",
+ "economie": [
+  {
+   "date_paris": "2026-11-23",
+   "heure_paris": "15:45",
+   "heure_new_york": "09:45",
+   "titre": "S&P Global Manufacturing PMI  (Nov)",
+   "importance": 3,
+   "prevision": null,
+   "precedent": "54.9",
+   "source": "investing.com",
+   "recoupe_tradingview": false
+  },
+  {
+   "date_paris": "2026-11-23",
+   "heure_paris": "15:45",
+   "heure_new_york": "09:45",
+   "titre": "S&P Global Services PMI  (Nov)",
+   "importance": 3,
+   "prevision": null,
+   "precedent": "56.1",
+   "source": "investing.com",
+   "recoupe_tradingview": false
+  },
+  {
+   "date_paris": "2026-11-24",
+   "heure_paris": "16:00",
+   "heure_new_york": "10:00",
+   "titre": "CB Consumer Confidence  (Nov)",
+   "importance": 3,
+   "prevision": "92.0",
+   "precedent": "91.7",
+   "source": "investing.com",
+   "recoupe_tradingview": false
+  },
+  {
+   "date_paris": "2026-11-25",
+   "heure_paris": "14:30",
+   "heure_new_york": "08:30",
+   "titre": "Core PCE Price Index (MoM)  (Oct)",
+   "importance": 3,
+   "prevision": "0.3%",
+   "precedent": "0.3%",
+   "source": "investing.com",
+   "recoupe_tradingview": true
+  },
+  {
+   "date_paris": "2026-11-25",
+   "heure_paris": "14:30",
+   "heure_new_york": "08:30",
+   "titre": "Core PCE Price Index (YoY)  (Oct)",
+   "importance": 3,
+   "prevision": "3.2%",
+   "precedent": "3.1%",
+   "source": "investing.com",
+   "recoupe_tradingview": true
+  },
+  {
+   "date_paris": "2026-11-25",
+   "heure_paris": "14:30",
+   "heure_new_york": "08:30",
+   "titre": "Durable Goods Orders (MoM)  (Oct)",
+   "importance": 3,
+   "prevision": "0.0%",
+   "precedent": "1.9%",
+   "source": "investing.com",
+   "recoupe_tradingview": true
+  },
+  {
+   "date_paris": "2026-11-25",
+   "heure_paris": "14:30",
+   "heure_new_york": "08:30",
+   "titre": "GDP (QoQ)  (Q3)",
+   "importance": 3,
+   "prevision": "3.4%",
+   "precedent": "2.2%",
+   "source": "investing.com",
+   "recoupe_tradingview": true
+  },
+  {
+   "date_paris": "2026-11-25",
+   "heure_paris": "14:30",
+   "heure_new_york": "08:30",
+   "titre": "Initial Jobless Claims",
+   "importance": 3,
+   "prevision": null,
+   "precedent": "203K",
+   "source": "investing.com",
+   "recoupe_tradingview": true
+  },
+  {
+   "date_paris": "2026-11-25",
+   "heure_paris": "16:00",
+   "heure_new_york": "10:00",
+   "titre": "New Home Sales  (Oct)",
+   "importance": 3,
+   "prevision": "670K",
+   "precedent": "676K",
+   "source": "investing.com",
+   "recoupe_tradingview": false
+  },
+  {
+   "date_paris": "2026-11-25",
+   "heure_paris": "16:30",
+   "heure_new_york": "10:30",
+   "titre": "Crude Oil Inventories",
+   "importance": 3,
+   "prevision": null,
+   "precedent": "3.380M",
+   "source": "investing.com",
+   "recoupe_tradingview": false
+  },
+  {
+   "date_paris": "2026-11-30",
+   "heure_paris": "15:45",
+   "heure_new_york": "09:45",
+   "titre": "Chicago PMI  (Nov)",
+   "importance": 3,
+   "prevision": null,
+   "precedent": "55.3",
+   "source": "investing.com",
+   "recoupe_tradingview": false
+  }
+ ],
+ "calendrier_tradingview": [
+  {
+   "date_paris": "2026-11-25",
+   "heure_paris": "14:30",
+   "titre": "Personal Spending MoM",
+   "prevision": 0.4,
+   "precedent": 0.5,
+   "source": "tradingview"
+  },
+  {
+   "date_paris": "2026-11-25",
+   "heure_paris": "14:30",
+   "titre": "Core PCE Price Index MoM",
+   "prevision": 0.3,
+   "precedent": 0.3,
+   "source": "tradingview"
+  },
+  {
+   "date_paris": "2026-11-25",
+   "heure_paris": "14:30",
+   "titre": "Personal Income MoM",
+   "prevision": 0.4,
+   "precedent": 0.2,
+   "source": "tradingview"
+  },
+  {
+   "date_paris": "2026-11-25",
+   "heure_paris": "14:30",
+   "titre": "GDP Growth Rate QoQ 2nd Est",
+   "prevision": 3.4,
+   "precedent": 1.5,
+   "source": "tradingview"
+  },
+  {
+   "date_paris": "2026-11-25",
+   "heure_paris": "14:30",
+   "titre": "Durable Goods Orders MoM",
+   "prevision": 0.4,
+   "precedent": 1.8,
+   "source": "tradingview"
+  }
+ ],
+ "resultats": [
+  {
+   "groupe": "US",
+   "symbole": "NASDAQ:VFS",
+   "ticker": "VFS",
+   "societe": "VinFast Auto Ltd.",
+   "date_paris": "2026-11-20",
+   "heure_paris": null,
+   "moment": null,
+   "bpa_prevu": -0.4633,
+   "ca_prevu": 1213032633,
+   "source": "tradingview"
+  },
+  {
+   "groupe": "US",
+   "symbole": "NASDAQ:ZM",
+   "ticker": "ZM",
+   "societe": "Zoom Communications, Inc. Class A",
+   "date_paris": "2026-11-23",
+   "heure_paris": "22:05",
+   "moment": "après la clôture",
+   "bpa_prevu": 1.4853,
+   "ca_prevu": 1279018548,
+   "source": "tradingview",
+   "nasdaq": {
+    "date": "2026-11-23",
+    "moment": "après la clôture",
+    "bpa_prevu": "$1"
+   },
+   "dates_concordantes": true
+  },
+  {
+   "groupe": "US",
+   "symbole": "NASDAQ:CLSK",
+   "ticker": "CLSK",
+   "societe": "Cleanspark, Inc.",
+   "date_paris": "2026-11-24",
+   "heure_paris": "22:00",
+   "moment": "après la clôture",
+   "bpa_prevu": -0.3465,
+   "ca_prevu": 130245399.99999999,
+   "source": "tradingview",
+   "nasdaq": {
+    "date": "2026-11-24",
+    "moment": null,
+    "bpa_prevu": "($0.36)"
+   },
+   "dates_concordantes": true
+  },
+  {
+   "groupe": "US",
+   "symbole": "NYSE:DELL",
+   "ticker": "DELL",
+   "societe": "Dell Technologies, Inc. Class C",
+   "date_paris": "2026-11-24",
+   "heure_paris": "22:00",
+   "moment": "après la clôture",
+   "bpa_prevu": 6.6161,
+   "ca_prevu": 49324366988,
+   "source": "tradingview",
+   "nasdaq": {
+    "date": "2026-11-24",
+    "moment": "après la clôture",
+    "bpa_prevu": "$6.48"
+   },
+   "dates_concordantes": true
+  },
+  {
+   "groupe": "US",
+   "symbole": "NASDAQ:NTNX",
+   "ticker": "NTNX",
+   "societe": "Nutanix, Inc. Class A",
+   "date_paris": "2026-11-24",
+   "heure_paris": "22:01",
+   "moment": "après la clôture",
+   "bpa_prevu": 0.6087,
+   "ca_prevu": 762760300,
+   "source": "tradingview",
+   "nasdaq": {
+    "date": "2026-11-24",
+    "moment": "après la clôture",
+    "bpa_prevu": "$0.29"
+   },
+   "dates_concordantes": true
+  },
+  {
+   "groupe": "Autres places",
+   "symbole": "HKEX:1810",
+   "ticker": "1810",
+   "societe": "Xiaomi Corporation Class B",
+   "date_paris": "2026-11-24",
+   "heure_paris": null,
+   "moment": null,
+   "bpa_prevu": 0.0257,
+   "ca_prevu": 15689332924.421139,
+   "source": "tradingview"
+  }
+ ],
+ "erreurs": []
+}

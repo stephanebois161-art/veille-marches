@@ -1,0 +1,204 @@
+{
+ "genere_le_utc": "2026-11-27T16:43:23Z",
+ "genere_le_paris": "2026-11-27 17:43",
+ "prochain_jour_de_bourse": "2026-11-30",
+ "fenetre": {
+  "debut": "2026-11-27",
+  "fin": "2026-12-07"
+ },
+ "lisez_moi": "Heures en heure de Paris. economie = investing.com, États-Unis, importance 3 uniquement (calendrier_tradingview = contrôle). resultats = sociétés suivies uniquement ; « moment » (avant l'ouverture / après la clôture) est fiable, heure_paris est indicative (souvent l'heure d'ouverture ou de clôture) et vide quand rien n'est annoncé. dates_concordantes = false : TradingView et Nasdaq ne donnent pas la même date, à vérifier. erreurs = sources en panne ce jour-là.",
+ "economie": [],
+ "calendrier_tradingview": [
+  {
+   "date_paris": "2026-12-01",
+   "heure_paris": "16:00",
+   "titre": "ISM Manufacturing PMI",
+   "prevision": 55.1,
+   "precedent": 55.5,
+   "source": "tradingview"
+  },
+  {
+   "date_paris": "2026-12-01",
+   "heure_paris": "16:00",
+   "titre": "JOLTs Job Openings",
+   "prevision": 7.475,
+   "precedent": 7.523,
+   "source": "tradingview"
+  },
+  {
+   "date_paris": "2026-12-03",
+   "heure_paris": "16:00",
+   "titre": "ISM Services PMI",
+   "prevision": 54.5,
+   "precedent": 54.5,
+   "source": "tradingview"
+  },
+  {
+   "date_paris": "2026-12-04",
+   "heure_paris": "14:30",
+   "titre": "Non Farm Payrolls",
+   "prevision": 90,
+   "precedent": 165,
+   "source": "tradingview"
+  },
+  {
+   "date_paris": "2026-12-04",
+   "heure_paris": "14:30",
+   "titre": "Unemployment Rate",
+   "prevision": 4.1,
+   "precedent": 4.1,
+   "source": "tradingview"
+  },
+  {
+   "date_paris": "2026-12-04",
+   "heure_paris": "16:00",
+   "titre": "Michigan Consumer Sentiment Prel",
+   "prevision": 52.9,
+   "precedent": 51,
+   "source": "tradingview"
+  }
+ ],
+ "resultats": [
+  {
+   "groupe": "US",
+   "symbole": "NASDAQ:VFS",
+   "ticker": "VFS",
+   "societe": "VinFast Auto Ltd.",
+   "date_paris": "2026-11-27",
+   "heure_paris": null,
+   "moment": "avant l'ouverture",
+   "bpa_prevu": -0.4633,
+   "ca_prevu": 1213032633,
+   "source": "tradingview + nasdaq",
+   "nasdaq": {
+    "date": "2026-12-02",
+    "moment": "avant l'ouverture",
+    "bpa_prevu": null
+   },
+   "dates_concordantes": false
+  },
+  {
+   "groupe": "US",
+   "symbole": "NYSE:CANG",
+   "ticker": "CANG",
+   "societe": "Cango Inc. Class A",
+   "date_paris": "2026-11-30",
+   "heure_paris": "22:00",
+   "moment": "après la clôture",
+   "bpa_prevu": -0.2649,
+   "ca_prevu": 47867334.54468001,
+   "source": "tradingview",
+   "nasdaq": {
+    "date": "2026-11-30",
+    "moment": "après la clôture",
+    "bpa_prevu": "($0.35)"
+   },
+   "dates_concordantes": true
+  },
+  {
+   "groupe": "US",
+   "symbole": "NASDAQ:MDB",
+   "ticker": "MDB",
+   "societe": "MongoDB, Inc. Class A",
+   "date_paris": "2026-12-01",
+   "heure_paris": "22:05",
+   "moment": "après la clôture",
+   "bpa_prevu": 1.6109,
+   "ca_prevu": 762473984,
+   "source": "tradingview",
+   "nasdaq": {
+    "date": "2026-12-01",
+    "moment": "après la clôture",
+    "bpa_prevu": "$0.08"
+   },
+   "dates_concordantes": true
+  },
+  {
+   "groupe": "US",
+   "symbole": "NASDAQ:MRVL",
+   "ticker": "MRVL",
+   "societe": "Marvell Technology, Inc.",
+   "date_paris": "2026-12-01",
+   "heure_paris": null,
+   "moment": "après la clôture",
+   "bpa_prevu": 1.1005,
+   "ca_prevu": 3154114846,
+   "source": "tradingview + nasdaq",
+   "nasdaq": {
+    "date": "2026-12-01",
+    "moment": "après la clôture",
+    "bpa_prevu": "$0.79"
+   },
+   "dates_concordantes": true
+  },
+  {
+   "groupe": "US",
+   "symbole": "NYSE:AI",
+   "ticker": "AI",
+   "societe": "C3.ai, Inc. Class A",
+   "date_paris": "2026-12-02",
+   "heure_paris": "22:05",
+   "moment": "après la clôture",
+   "bpa_prevu": -0.2128,
+   "ca_prevu": 53146977,
+   "source": "tradingview",
+   "nasdaq": {
+    "date": "2026-12-02",
+    "moment": "après la clôture",
+    "bpa_prevu": "($0.58)"
+   },
+   "dates_concordantes": true
+  },
+  {
+   "groupe": "US",
+   "symbole": "NYSE:SNOW",
+   "ticker": "SNOW",
+   "societe": "Snowflake, Inc.",
+   "date_paris": "2026-12-02",
+   "heure_paris": "22:05",
+   "moment": "après la clôture",
+   "bpa_prevu": 0.5981,
+   "ca_prevu": 1654755824,
+   "source": "tradingview",
+   "nasdaq": {
+    "date": "2026-12-02",
+    "moment": "après la clôture",
+    "bpa_prevu": "($0.32)"
+   },
+   "dates_concordantes": true
+  },
+  {
+   "groupe": "US",
+   "symbole": "NASDAQ:RR",
+   "ticker": "RR",
+   "societe": "Richtech Robotics Inc. Class B",
+   "date_paris": "2026-12-02",
+   "heure_paris": null,
+   "moment": null,
+   "bpa_prevu": -0.02,
+   "ca_prevu": 1460000,
+   "source": "tradingview"
+  },
+  {
+   "groupe": "US",
+   "symbole": "NASDAQ:DOCU",
+   "ticker": "DOCU",
+   "societe": "DocuSign, Inc.",
+   "date_paris": "2026-12-03",
+   "heure_paris": "22:05",
+   "moment": "après la clôture",
+   "bpa_prevu": 1.1798,
+   "ca_prevu": 889021939,
+   "source": "tradingview",
+   "nasdaq": {
+    "date": "2026-12-03",
+    "moment": "après la clôture",
+    "bpa_prevu": "$0.53"
+   },
+   "dates_concordantes": true
+  }
+ ],
+ "erreurs": [
+  "investing.com inaccessible : HTTP Error 403: Forbidden"
+ ]
+}
